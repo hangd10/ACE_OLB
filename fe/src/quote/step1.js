@@ -6,6 +6,7 @@ class Step1 extends Component {
         return (
             <form>
                 <Field name="firstName" placeholder="First Name" component="input" type="text" />
+                
                 <input type="text" placeholder="Last Name" name="lastName" />
                 <input type="text" placeholder="Address" name="address" />
 

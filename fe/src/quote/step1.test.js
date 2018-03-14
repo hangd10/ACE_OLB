@@ -8,30 +8,20 @@ import { reducer as formReducer } from 'redux-form';
 
 describe('Contact Information Test Form', () => {
     let wrapper;
-    // var store;
+    let store;
 
-    // beforeEach( () => {
-    //     const props = {
-    //         fields: {
-	// 			firstName: {
-	// 				value: ''
-	// 				// touched: touched,
-	// 				// error: error
-	// 			}
-	// 		},
-    //      }
+    beforeEach( () => {
+        const props = {  }
         
-    //     ;
-    //     // store = createStore(combineReducers({ form :  formReducer }));
-    //     wrapper = shallow(
-    //         <Step1 { ...props }/>
-    //         // <Provider store={store}><Step1 { ...props }/></Provider>
-    //     );
-    //     console.log('wrapper ' +JSON.stringify(wrapper));
-    // });
+        ;
+        store = createStore(combineReducers({ form :  formReducer }));
+        wrapper = mount(
+            <Provider store={store}><Step1 /></Provider>
+        );
+    });
 
     it('contains all the form elements with name property for json object onSubmit', () => {
-        //expect(wrapper.find('input[placeholder="First Name"]').prop('name')).toEqual('firstName');
+        expect(wrapper.find('input[placeholder="First Name"]').prop('name')).toEqual('firstName');
         // expect(wrapper.find('input[placeholder="Last Name"]').prop('name')).toEqual('lastName');
         // expect(wrapper.find('input[placeholder="Address"]').prop('name')).toEqual('address');
 
