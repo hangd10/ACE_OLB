@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Step1 from './quote/step1';
 import MasterQuoteComponent from
-  './quote/components/masterQuote/component/masterQuoteComponent'
+  './quote/masterQuote/component/masterQuoteComponent'
 
 class App extends Component {
   submit = values => {
@@ -24,8 +23,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
-        <Step1 onSubmit={this.submit}/>
-        <MasterQuoteComponent />
+        <MasterQuoteComponent onSubmit={this.submit} />
       </div>
     );
   }

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-let Step1 = props => {
+let ContactInfoRender = ( props ) => {
     const { handleSubmit } = props;
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={ handleSubmit }>
             <Field name="firstName" placeholder="First Name" component="input" type="text" />
             <Field name="lastName" placeholder="Last Name" component="input" type="text" />
             <input type="text" placeholder="Address" name="address" />
@@ -15,12 +15,13 @@ let Step1 = props => {
             <input type="text" placeholder="email" name="email" />
 
             <button type="submit">Submit</button>
+            {/* <button type="button" onClick={props.cicFunction}>Click Me</button> */}
         </form>
     )
 }
 
-Step1 = reduxForm({
+ContactInfoRender = reduxForm({
     form : 'simple'
-})(Step1);
+})(ContactInfoRender);
 
-export default Step1;
+export default ContactInfoRender;

@@ -1,7 +1,7 @@
 import Enzyme, { shallow, render, mount } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Step1 from './step1';
+import ContactInfoComponent from './component/contactInfoComponent';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { reducer as formReducer } from 'redux-form';
@@ -19,7 +19,7 @@ describe('Contact Information Test Form', () => {
         ;
         store = createStore(combineReducers({ form :  formReducer }));
         wrapper = mount(
-            <Provider store={store}><Step1 handleSubmit={handleSubmit} /></Provider>
+            <Provider store={store}><ContactInfoComponent handleSubmit={handleSubmit} /></Provider>
         );
     });
 
