@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+// import { Route, Link, MemoryRouter } from 'react-router-dom'
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Switch, Route } from 'react-router-dom'
+
 
 import MasterQuoteComponent from
   './quote/masterQuote/component/masterQuoteComponent'
+import RouteWithSubRoutes from './setup/routes'
 
 class App extends Component {
   submit = values => {
@@ -23,7 +28,10 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
-        <MasterQuoteComponent onSubmit={this.submit} />
+        <Switch>
+          <Route path='/quote' component={MasterQuoteComponent}/>
+        </Switch>
+
       </div>
     );
   }

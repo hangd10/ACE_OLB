@@ -7,24 +7,31 @@ import { reducer as formReducer } from 'redux-form';
 import sinon from 'sinon';
 
 import chai, { expect } from 'chai'
+import { Route, Link, MemoryRouter } from 'react-router-dom';
 
+import App from '../../App'
 import MasterQuoteComponent from './component/masterQuoteComponent'
 
 
 describe('MasterQuote', () => {
     let masterQuote;
-    // let store;
-    // let handleSubmit;
-    //
+    let store;
+    let wrapper;
+
+
     beforeEach( () => {
-        // handleSubmit = sinon.spy();
-        // const props = {  }
-        //
-        // ;
-        // store = createStore(combineReducers({ form :  formReducer }));
-        // wrapper = mount(
-        //     <Provider store={store}><Step1 handleSubmit={handleSubmit} /></Provider>
-        // );
+
+        store = createStore(combineReducers({ form :  formReducer }));
+
+        wrapper = mount(
+          <MemoryRouter initialEntries={[ '/quote' ]}>
+            <Provider store={store}>
+              <App />
+            </Provider>
+          </MemoryRouter>
+        );
+
+        console.log("router app: ", wrapper)
 
         masterQuote = shallow( <MasterQuoteComponent/> );
 

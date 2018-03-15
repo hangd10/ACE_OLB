@@ -18,10 +18,7 @@ class MasterQuoteComponent extends Component {
 
   render() {
     return (
-      <MasterQuoteRender
-      >
-        Hi
-      </MasterQuoteRender>
+      <MasterQuoteRender />
     );
   }
 }

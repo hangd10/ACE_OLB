@@ -8,13 +8,15 @@ import rootReducer from './setup/rootReducer'
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 const store = createStore(rootReducer);
 
 ReactDOM.render(
     <Provider store={store}>
+      <BrowserRouter>
         <App />
+      </BrowserRouter>
     </Provider>,
     document.getElementById('root'));
 registerServiceWorker();
