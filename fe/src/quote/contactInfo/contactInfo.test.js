@@ -7,6 +7,9 @@ import { Provider } from 'react-redux';
 import { reducer as formReducer } from 'redux-form';
 import sinon from 'sinon';
 
+import * as actions from './actions/';
+
+
 describe('Contact Information Test Form', () => {
     let wrapper;
     let store;
@@ -41,5 +44,10 @@ describe('Contact Information Test Form', () => {
         // console.log(wrapper.find('button[type="submit"]'));
         wrapper.find('button[type="submit"]').simulate('click');
         expect(handleSubmit.calledWith(wrapper.instance().submit));
+      });
+
+      it('verifies all actions are configured correctly', () => {
+        const contactInfo = { };
+        actions.goToVehicleInfo(contactInfo);
       });
 })
