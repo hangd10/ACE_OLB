@@ -31,13 +31,11 @@ describe('MasterQuote', () => {
           </MemoryRouter>
         );
 
-        console.log("router app: ", wrapper)
-
         masterQuote = shallow( <MasterQuoteComponent/> );
 
     });
 
-    it('exsists', () => {
+    it('exists', () => {
         expect(masterQuote).to.exist;
     });
 

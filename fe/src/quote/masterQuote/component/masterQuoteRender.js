@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 // import { Field, reduxForm } from 'redux-form';
 import ContactInfoComponent from '../../contactInfo/component/contactInfoComponent'
+import VehicleInfoComponent from '../../vehicleInfo/component/vehicleInfoComponent'
 import RouteWithSubRoutes from '../../../setup/routes'
 
 let MasterQuoteRender = ( props ) => {
@@ -17,7 +18,7 @@ let MasterQuoteRender = ( props ) => {
 
         <Switch>
           <Route path='/quote/contact' component={ContactInfoComponent}/>
-          <Route path='/quote/vehicle' component={ContactInfoComponent}/>
+          <Route path='/quote/vehicle' component={VehicleInfoComponent}/>
         </Switch>
 
       </div>

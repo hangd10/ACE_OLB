@@ -13,7 +13,7 @@ const routes = [
 
     routes: [
       {
-        path: "/tacos/contactInfo",
+        path: "/quote/contactInfo",
         component: ContactInfo
       },
     ]

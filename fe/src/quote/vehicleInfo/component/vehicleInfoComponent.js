@@ -11,19 +11,18 @@ class VehicleInfoComponent extends Component {
 
       handleComponentSubmit = values => {
         // print the form values to the console
-        console.log(`VehicleInfoComponent... ${ JSON.stringify(values) }`);
         goToDriverInfo(values);
       }
 
     //   cicFunctionParent = (dataFromChild) => {
     //     console.log('cicFunction called ' +dataFromChild);
     //   }
-    
+
       render() {
         return (
-          <VehicleInfoRender 
+          <VehicleInfoRender
             // cicFunction= { this.cicFunctionParent }
-            onSubmit ={ this.handleComponentSubmit } 
+            onSubmit ={ this.handleComponentSubmit }
           />
         );
       }
