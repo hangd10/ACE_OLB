@@ -5,6 +5,11 @@ import './App.css';
 import Step1 from './quote/step1';
 
 class App extends Component {
+  submit = values => {
+    // print the form values to the console
+    console.log(values)
+  };
+  
   render() {
     return (
       <div className="App">
@@ -17,7 +22,7 @@ class App extends Component {
 
           
         </p>
-        <Step1 />
+        <Step1 onSubmit={this.submit}/>
       </div>
     );
   }
