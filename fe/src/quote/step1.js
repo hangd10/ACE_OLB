@@ -1,4 +1,4 @@
-import React, {  Component } from 'react';
+import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 let Step1 = props => {
@@ -24,4 +24,3 @@ Step1 = reduxForm({
 })(Step1);
 
 export default Step1;
-
