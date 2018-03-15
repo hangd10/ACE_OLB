@@ -8,6 +8,7 @@ import rootReducer from './setup/rootReducer'
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const store = createStore(rootReducer);
 
