@@ -21,7 +21,7 @@ let ContactInfoRender = ( props ) => {
 }
 
 ContactInfoRender = reduxForm({
-    form : 'simple'
+    form : 'contact'
 })(ContactInfoRender);
 
 export default ContactInfoRender;

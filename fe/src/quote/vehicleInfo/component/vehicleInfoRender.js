@@ -14,7 +14,7 @@ let VehicleInfoRender = ( props ) => {
 }
 
 VehicleInfoRender = reduxForm({
-    form : 'simple'
+    form : 'vehicle'
 })(VehicleInfoRender);
 
 export default VehicleInfoRender;
