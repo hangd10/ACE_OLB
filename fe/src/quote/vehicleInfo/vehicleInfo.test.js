@@ -64,7 +64,7 @@ describe('Vehicle Information Test Form', () => {
             type : actions.GO_TO_ADD_DRIVER_INFO
             ,payload
         }) ).toEqual({
-            "vehicleInfo" : payload
+            "vehicle" : payload
         });
       });
 })
