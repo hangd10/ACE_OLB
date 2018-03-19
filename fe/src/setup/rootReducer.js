@@ -9,11 +9,10 @@ import MasterQuoteComponent from
 console.log("quote reducer: ", MasterQuoteComponent)
 
 const rootReducer = combineReducers({
-    contact : ContactReducer
+    contact : ContactReducer,
     // ,vehicle : VehicleReducer
-    ,form : formReducer
     form : formReducer,
-    master : MasterQuoteComponent,
+    master : MasterQuoteComponent
 });
 
 export default rootReducer;
