@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 
-import configureMockStore from 'redux-mock-store';
+import configureStore from 'redux-mock-store';
 import { Provider, connect } from 'react-redux';
 
 import chai, { expect } from 'chai'
@@ -14,8 +14,13 @@ import MasterQuoteComponent from './component/masterQuoteComponent'
 
 import { createMockStore } from 'redux-test-utils';
 
-const mockStore = configureMockStore();
+import * as actions from './actions';
+import * as types from './actionTypes';
+import reducer from './reducer/index.js';
 
+
+
+const mockStore = configureStore();
 
 describe('MasterQuote', () => {
 
@@ -38,26 +43,14 @@ describe('MasterQuote', () => {
           },
           formStage: 0,
         };
+        store = mockStore(initialState);
 
-        state = mockStore({ initialState });
-
-        // console.log("state", state, state.getState())
-
-        const mapStateToProps = (state) => ({
-          state,
-        });
-
-        store = createMockStore(state);
 
         wrapper = mount(
           <MemoryRouter initialEntries={[ path ]}>
-            <Provider store={store}>
-              <App />
-            </Provider>
+              <MasterQuoteComponent store={store} />
           </MemoryRouter>
         );
-
-        wrapper.find(MasterQuoteComponent)
 
     });
 
@@ -67,18 +60,45 @@ describe('MasterQuote', () => {
     });
 
     it('has the correct route path', () => {
-      const componentPath =
-        wrapper.find(MasterQuoteComponent).props().location.pathname;
-      expect(componentPath).to.eql(path);
 
     });
 
     it('has redux properties mapped to state', () => {
-      // let componentProps =
-      //   wrapper.find(MasterQuoteComponent).props().initialState.quote;
-
-      // expect(componentProps).to.eql(path);
+      let componentProps =
+        wrapper.find(MasterQuoteComponent).props().store.getState();
+      expect(componentProps).to.eql(initialState);
 
     });
+
+    it('addTodo action functional', () => {
+      const text = 'addTodo functional test'
+
+      const action = actions.addTodo(text)
+      const expectedAction = {  type: types.ADD_TODO, payload: text }
+
+      /***
+      Must stringify objects to compare directly otherwise JS will compare
+      wether the two objects point to the same poitn in memore rather than content
+      ***/
+
+      expect(JSON.stringify(action)).to.equal(JSON.stringify(expectedAction));
+
+    });
+
+
+    it('ADD_TODO actionType updates formStage property', () => {
+      const text = 'addTodo test'
+      const updateObj = {  type: types.ADD_TODO, payload: text }
+
+      const expectedAction =
+        { ...initialState, formStage: text }
+      const action = reducer(initialState, updateObj)
+
+      expect(JSON.stringify(action)).to.equal(JSON.stringify(expectedAction));
+
+
+
+    });
+
 
 })

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { bindActionCreators } from 'redux'; /* code change */
 
-import * as actions from '../actions/index.js';
+import * as actions from '../actions';
 import MasterQuoteRender from './masterQuoteRender.js'
 
 
