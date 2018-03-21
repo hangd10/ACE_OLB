@@ -8,7 +8,6 @@
     "react-redux": "5.0.7",
     "react-router-dom": "4.2.2",
     "react-scripts": "1.1.1",
-    "react-test-renderer": "16.2.0",
     "redux": "3.7.2",
     "redux-form": "7.3.0"
   },
@@ -21,6 +20,7 @@
     "jquery": "^3.3.1",
     "jsdom": "^11.6.2",
     "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.2.0",
     "redux-mock-store": "^1.5.1",
     "redux-test-utils": "^0.2.2",
     "sinon": "4.4.5"

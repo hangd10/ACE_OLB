@@ -18,7 +18,7 @@ describe('Contact Information Test Form', () => {
     beforeEach( () => {
         handleSubmit = sinon.spy();
         const props = {  }
-        
+
         ;
         store = createStore(combineReducers({ form :  formReducer }));
         wrapper = mount(
@@ -27,19 +27,11 @@ describe('Contact Information Test Form', () => {
     });
 
     it('contains all the form elements with name property for json object onSubmit', () => {
-        expect(wrapper.find('input[placeholder="First Name"]').prop('name')).toEqual('firstName');
-        expect(wrapper.find('input[placeholder="Last Name"]').prop('name')).toEqual('lastName');
 
-        expect(wrapper.find('button[type="submit"]').length, 1);
-        // expect(wrapper.find('input[placeholder="Address"]').prop('name')).toEqual('address');
-
-        // expect(wrapper.find('input[type="select"]').prop('name')).toEqual('phoneType');
-        // expect(wrapper.find('input[placeholder="000-000-0000"]').prop('name')).toEqual('phone');
-        // expect(wrapper.find('input[placeholder="email"]').prop('name')).toEqual('email');
     });
 
     it('calls handleSubmit on form submission', () => {
-        
+
         // const wrapper = shallow(<Step1 handleSubmit={handleSubmit} />);
         // console.log(wrapper.find('button[type="submit"]'));
         wrapper.find('button[type="submit"]').simulate('click');
@@ -50,4 +42,14 @@ describe('Contact Information Test Form', () => {
         const contactInfo = { };
         actions.goToVehicleInfo(contactInfo);
       });
+
+      it('validates user input', () => {
+
+        let firstNameInput = wrapper.find('input[placeholder="First Name"]');
+
+        expect(wrapper.find('input[placeholder="First Name"]').prop('name')).toEqual('firstName');
+
+      });
+
+
 })

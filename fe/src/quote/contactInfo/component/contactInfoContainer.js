@@ -15,18 +15,15 @@ class ContactInfoContainer extends Component {
       onContainerSubmit = values => {
         this.props.goToVehicleInfo(values);
       }
-    
+
       render() {
         const { handleSubmit } = this.props;
 
         return (
-          
-          <form onSubmit={ handleSubmit(this.onContainerSubmit.bind(this)) }>
-            <Field name="firstName" placeholder="First Name" component="input" type="text" />
-            <Field name="lastName" placeholder="Last Name" component="input" type="text" />
 
-            <input type="text" placeholder="Address" name="address" />
-            <input type="text" placeholder="000-000-0000" name="phone" />
+          <form onSubmit={ handleSubmit(this.onContainerSubmit.bind(this)) }>
+
+            <input type="number" placeholder="00000" name="zip" />
             <input type="text" placeholder="email" name="email" />
 
             <button type="submit">Submit</button>
