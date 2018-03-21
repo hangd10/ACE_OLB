@@ -21,11 +21,11 @@ let MasterQuoteRender = ( props ) => {
         </ul>
 
         <Switch>
-          {/* <Route path='/quote/contact' component={ContactInfoComponent}/> */}
-          {/* <Route path='/quote/vehicle' component={VehicleInfoComponent}/> */}
+          <Route path='/quote/contact' component={ContactInfoComponent}/>
+          <Route path='/quote/vehicle' component={VehicleInfoComponent}/>
 
-          <Route path='/quote/contact' component={ContactInfoContainer}/>
-          <Route path='/quote/vehicle' component={VehicleInfoContainer}/>
+          {/* <Route path='/quote/contact' component={ContactInfoContainer}/> */}
+          {/* <Route path='/quote/vehicle' component={VehicleInfoContainer}/> */}
         </Switch>
 
       </div>

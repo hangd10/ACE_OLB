@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
     // ,vehicle : VehicleReducer
     // ,form : formReducer
     form : formReducer,
-    master : MasterQuoteComponent,
+    master : MasterQuoteComponent
 });
 
 export default rootReducer;

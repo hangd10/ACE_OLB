@@ -6,7 +6,7 @@ let ContactInfoRender = ( props ) => {
 
     return (
         <form onSubmit={ handleSubmit }>
-          
+
           <input type="number" placeholder="00000" name="zip" />
           <input type="text" placeholder="email" name="email" />
 
@@ -17,7 +17,7 @@ let ContactInfoRender = ( props ) => {
 }
 
 ContactInfoRender = reduxForm({
-    form : 'contact'
+    form : 'ContactForm'
 })(ContactInfoRender);
 
 export default ContactInfoRender;

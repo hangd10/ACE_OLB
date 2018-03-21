@@ -13,7 +13,7 @@ class VehicleInfoContainer extends Component {
       }
 
       componentDidMount() {
-        console.log(`Contact Info ${ JSON.stringify(this.props.contact) }`);
+        console.log(`VehicleInfoContainer contact info from redux store ${ JSON.stringify(this.props.contact) }`);
       }
 
       onContainerSubmit = values => {
