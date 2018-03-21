@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from "react-redux";
+
 import ContactInfoRender from './contactInfoRender'
+import * as actions from '../actions';
 
 class ContactInfoComponent extends Component {
 
@@ -8,18 +12,13 @@ class ContactInfoComponent extends Component {
       }
 
       handleComponentSubmit = values => {
-        // print the form values to the console
-        console.log(`ContactInfoComponent... ${ JSON.stringify(values) }`);
+        //console.log(`ContactInfoComponent.handleComponentSubmit() - ${ JSON.stringify(values) }`);
+        this.props.goToVehicleInfo(values);
       }
-
-    //   cicFunctionParent = (dataFromChild) => {
-    //     console.log('cicFunction called ' +dataFromChild);
-    //   }
     
       render() {
         return (
           <ContactInfoRender 
-            // cicFunction= { this.cicFunctionParent }
             onSubmit ={ this.handleComponentSubmit } 
           />
         );
@@ -27,4 +26,14 @@ class ContactInfoComponent extends Component {
 
 }
 
-export default ContactInfoComponent;
+const mapStateToProps = (state) => {
+  return {
+    contact: state.contact
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators( actions, dispatch, {} );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactInfoComponent);

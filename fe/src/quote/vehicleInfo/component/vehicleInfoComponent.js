@@ -1,37 +1,44 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from "react-redux";
+
 import VehicleInfoRender from './vehicleInfoRender';
-import { goToDriverInfo } from '../actions/';
+import * as actions from '../actions';
 
 class VehicleInfoComponent extends Component {
 
     constructor(props) {
-        super(props);
-      }
+      super(props);
+    }
 
-      handleComponentSubmit = values => {
-        // print the form values to the console
-        goToDriverInfo(values);
-      }
+    componentDidMount() {
+      console.log(`VehicleInfoComponent contact info from redux store ${ JSON.stringify(this.props.contact) }`);
+    }
 
-    //   cicFunctionParent = (dataFromChild) => {
-    //     console.log('cicFunction called ' +dataFromChild);
-    //   }
+    handleComponentSubmit = values => {
+      // print the form values to the console
+      //console.log(`VehicleInfoComponent.handleComponentSubmit() - ${ JSON.stringify(values) }`);
+      this.props.goToDriverInfo(values);
+    }
 
-      render() {
-        return (
-          <VehicleInfoRender
-            // cicFunction= { this.cicFunctionParent }
-            onSubmit ={ this.handleComponentSubmit }
-          />
-        );
-      }
+    render() {
+      return (
+        <VehicleInfoRender
+          onSubmit ={ this.handleComponentSubmit }
+        />
+      );
+    }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
-    vehicle: state.vehicleInfo
+    contact: state.contact,
+    vehicle: state.vehicle
   };
 }
 
-export default connect(mapStateToProps, { goToDriverInfo })(VehicleInfoComponent);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators( actions, dispatch, {} );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(VehicleInfoComponent);
