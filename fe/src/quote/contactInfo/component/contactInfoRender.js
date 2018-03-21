@@ -7,7 +7,7 @@ let ContactInfoRender = ( props ) => {
     return (
         <form onSubmit={ handleSubmit }>
 
-          <input type="number" placeholder="00000" name="zip" />
+          <input type="number" placeholder="02320000" name="zip" />
           <input type="text" placeholder="email" name="email" />
 
           <button type="submit">Submit</button>

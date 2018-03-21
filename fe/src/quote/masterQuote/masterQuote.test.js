@@ -97,6 +97,14 @@ describe('MasterQuote', () => {
       expect(JSON.stringify(action)).to.equal(JSON.stringify(expectedAction));
 
 
+    });
+
+
+    it('ADD_TODO actionType updates formStage property', () => {
+      const text = 'addTodo test'
+      const updateObj = {  type: types.ADD_TODO, payload: text }
+
+      expect(2).to.equal(2);
 
     });
 

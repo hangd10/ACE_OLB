@@ -22,11 +22,8 @@ const initialState = {
 export default function(state = initialState, action) {
 
     switch(action.type) {
-        case types.ADD_TODO : {
-            return Object.assign( {}, state,
-              { formStage : action.payload }
-            )
-        }
+        case types.ADD_TODO :
+            return { ...initialState, formStage: action.payload }
         default :
           return state;
     }
