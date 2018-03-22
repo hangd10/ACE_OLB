@@ -44,23 +44,27 @@ describe('Contact Information Test Form', () => {
       // console.log(wrapper.find('button[type="submit"]'));
       wrapper.find('button[type="submit"]').simulate('click');
       expect(handleSubmit.calledWith(wrapper.instance().submit));
+
     });
 
     it('verifies all actions are configured correctly', () => {
       const contactInfo = { };
       actions.goToVehicleInfo(contactInfo);
+
     });
 
     it('verify instace of email field', () => {
       let zipInputLength = wrapper.find('input[name="email"]').length;
 
       expect(zipInputLength).to.eql(1);
+
     });
 
     it('verify instace of zipcode field', () => {
       let zipInputLength = wrapper.find('input[name="zip"]').length;
 
       expect(zipInputLength).to.eql(1);
+
     });
 
     /*
@@ -104,7 +108,6 @@ describe('Contact Information Test Form', () => {
         "Access-Control-Allow-Origin": "*",
       }
       const check = ( resp ) => {
-        console.log("boon: ", resp)
         expect(resp.status).to.equal(expectedPOST);
 
       }
