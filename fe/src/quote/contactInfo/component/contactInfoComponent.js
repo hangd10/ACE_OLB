@@ -8,21 +8,27 @@ import * as actions from '../actions';
 class ContactInfoComponent extends Component {
 
     constructor(props) {
+        
         super(props);
       }
 
-      handleComponentSubmit = values => {
-        //console.log(`ContactInfoComponent.handleComponentSubmit() - ${ JSON.stringify(values) }`);
-        this.props.goToVehicleInfo(values);
-      }
-    
-      render() {
-        return (
-          <ContactInfoRender 
-            onSubmit ={ this.handleComponentSubmit } 
-          />
-        );
-      }
+    handleComponentSubmit = values => {
+      //console.log(`ContactInfoComponent.handleComponentSubmit() - ${ JSON.stringify(values) }`);
+      this.props.goToVehicleInfo(values);
+    }
+
+    logInput = e => {
+      console.log(e.target.value)
+    }
+
+    render() {
+      return (
+        <ContactInfoRender
+          onSubmit ={ this.handleComponentSubmit }
+          logCompInput = { this.logInput }
+        />
+      );
+    }
 
 }
 

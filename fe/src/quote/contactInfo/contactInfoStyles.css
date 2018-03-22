@@ -1,0 +1,15 @@
+
+.errorScript {
+  font-size: 10px;
+  color: red;
+  visibility: hidden;
+}
+
+.throwError {
+  visibility: visible;  
+}
+
+.blockLayout {
+  display: block;
+  margin: auto;
+}

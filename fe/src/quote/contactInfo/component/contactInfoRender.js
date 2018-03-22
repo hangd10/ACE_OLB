@@ -1,5 +1,8 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import styles from '../contactInfoStyles.css'
+
+console.log(styles)
 
 let ContactInfoRender = ( props ) => {
     const { handleSubmit } = props;
@@ -7,14 +10,31 @@ let ContactInfoRender = ( props ) => {
     return (
         <form onSubmit={ handleSubmit }>
 
-          <input type="number" placeholder="02320000" name="zip" />
-          <input type="text" placeholder="email" name="email" />
+          <div>
+
+            <input onChange={props.logCompInput} className="blockLayout" type="number" placeholder="00000" name="zip" id="zipInput"/>
+
+            <sup className="errorScript" id="zipInputError">your zipcode is invalid</sup>
+
+          </div>
+
+          <br/>
+
+          <div>
+
+            <input className="blockLayout" type="text" placeholder="email" name="email" id="emailInput"/>
+
+            <sup className="errorScript" id="emailInputError">your email is invalid</sup>
+
+          </div>
 
           <button type="submit">Submit</button>
 
         </form>
     )
 }
+
+
 
 ContactInfoRender = reduxForm({
     form : 'ContactForm'

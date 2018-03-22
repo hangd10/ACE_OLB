@@ -44,12 +44,49 @@ describe('Contact Information Test Form', () => {
       actions.goToVehicleInfo(contactInfo);
     });
 
-    it('testing that there is only 1 instance of zipcode input field', () => {
+    it('verify instace of email field', () => {
+      let zipInputLength = wrapper.find('input[name="email"]').length;
+      console.log(zipInputLength);
+
+      expect(zipInputLength).to.eql(1);
+    });
+
+    it('verify instace of zipcode field', () => {
       let zipInputLength = wrapper.find('input[name="zip"]').length;
       console.log(zipInputLength);
 
       expect(zipInputLength).to.eql(1);
     });
+
+    it('error handing for email input - .com at end', () => {
+      // must have .com at end
+      const test1 = "aaa@aaa-calif.rom"
+
+      let errorScript = wrapper.find('#emailInputError');
+      let emailInput =  wrapper.find('input[name="email"]');
+      let errorScriptInit =  wrapper.find('#emailInputError.errorScript.throwError');
+
+      emailInput.value = test1;
+
+      //onSubmit click simulation
+      wrapper.find('button[type="submit"]').simulate('click');
+
+      expect((errorScriptInit).length).to.equal(1);
+
+
+    });
+
+    it('error handing for email input - must have @ symbol', () => {
+      //must have @ symbol
+      // const test2;
+
+      let emailInput = wrapper.find('input[name="email"]');
+      // emailInput.value =
+
+
+    });
+
+
 
 
 

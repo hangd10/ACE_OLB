@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ContactInfoComponent from '../../contactInfo/component/contactInfoComponent'
 import VehicleInfoComponent from '../../vehicleInfo/component/vehicleInfoComponent'
 
-import ContactInfoContainer from '../../contactInfo/component/contactInfoContainer'
 import VehicleInfoContainer from '../../vehicleInfo/component/vehicleInfoContainer'
 
 import RouteWithSubRoutes from '../../../setup/routes'
