@@ -1,23 +1,27 @@
-import Enzyme, { shallow, render, mount } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ContactInfoComponent from './component/contactInfoComponent';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { reducer as formReducer } from 'redux-form';
-import sinon from 'sinon';
 
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+
+import sinon from 'sinon';
 import chai, { expect } from 'chai'
+import Enzyme, { shallow, render, mount } from 'enzyme';
 
 import * as actions from './actions/';
 import api from '../../common/APIclient'
 
-// console.log("APIS: ", api.GET)
+
 
 describe('Contact Information Test Form', () => {
     let wrapper;
     let store;
     let handleSubmit;
+    let mock;
 
     beforeEach( () => {
         handleSubmit = sinon.spy();
@@ -30,8 +34,9 @@ describe('Contact Information Test Form', () => {
               <ContactInfoComponent handleSubmit={handleSubmit} />
             </Provider>
         );
-    });
+        mock = new MockAdapter(axios);
 
+    });
 
     it('calls handleSubmit on form submission', () => {
 
@@ -98,11 +103,16 @@ describe('Contact Information Test Form', () => {
         'Content-Type': 'application/json;charset=UTF-8',
         "Access-Control-Allow-Origin": "*",
       }
+      const check = ( resp ) => {
+        console.log("boon: ", resp)
+        expect(resp.status).to.equal(expectedPOST);
 
-      // let POST = api.POST(urlMock, dataMock, headerMock);
+      }
+
       let expectedPOST = 200;
-
-      // expect(POST.status).to.equal(expectedPOST);
+      mock.onPost(urlMock, dataMock)
+        .reply(200, "successful Bear");
+      let POST = api.POST(urlMock, dataMock, check);
 
 
     })

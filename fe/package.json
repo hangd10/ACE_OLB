@@ -13,6 +13,7 @@
     "redux-form": "7.3.0"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.14.1",
     "chai": "4.1.2",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",

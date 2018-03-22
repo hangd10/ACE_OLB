@@ -4,12 +4,13 @@ import axios from 'axios'
 
 var API = {
 
-  POST: (url, data, config, callback) => {
+  POST: (url, data, callback) => {
 
-    axios.post( url, data, config )
+    axios.post( url, data )
       .then(resp => {
-        console.log(resp)
-        // callback(resp)
+        // console.log(resp)
+        callback(resp)
+
         return resp
 
       })
@@ -23,8 +24,8 @@ var API = {
 
     axios.get(url, data)
       .then(resp => {
-        console.log(resp)
-        // callback(resp)
+        // console.log(resp)
+        callback(resp)
         return resp
 
       })
