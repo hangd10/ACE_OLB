@@ -10,7 +10,9 @@ import sinon from 'sinon';
 import chai, { expect } from 'chai'
 
 import * as actions from './actions/';
+import api from '../../common/APIclient'
 
+// console.log("APIS: ", api.GET)
 
 describe('Contact Information Test Form', () => {
     let wrapper;
@@ -46,18 +48,17 @@ describe('Contact Information Test Form', () => {
 
     it('verify instace of email field', () => {
       let zipInputLength = wrapper.find('input[name="email"]').length;
-      console.log(zipInputLength);
 
       expect(zipInputLength).to.eql(1);
     });
 
     it('verify instace of zipcode field', () => {
       let zipInputLength = wrapper.find('input[name="zip"]').length;
-      console.log(zipInputLength);
 
       expect(zipInputLength).to.eql(1);
     });
 
+    /*
     it('error handing for email input - .com at end', () => {
       // must have .com at end
       const test1 = "aaa@aaa-calif.rom"
@@ -85,7 +86,26 @@ describe('Contact Information Test Form', () => {
 
 
     });
+    */
 
+    it('server returns a 200 on post call', () => {
+      const urlMock = "https://jsonplaceholder.typicode.com/posts"
+      const dataMock = {
+        userEmail: "bob@aaa-calif.com",
+        zipCode: 12345
+      }
+      const headerMock = {
+        'Content-Type': 'application/json;charset=UTF-8',
+        "Access-Control-Allow-Origin": "*",
+      }
+
+      // let POST = api.POST(urlMock, dataMock, headerMock);
+      let expectedPOST = 200;
+
+      // expect(POST).to.equal(expectedPOST);
+
+
+    })
 
 
 

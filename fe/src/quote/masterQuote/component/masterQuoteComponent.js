@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'; /* code change */
 
 import * as actions from '../actions';
 import MasterQuoteRender from './masterQuoteRender.js'
+import api from '../../../common/APIclient'
 
 
 class MasterQuoteComponent extends Component {
@@ -15,7 +16,7 @@ class MasterQuoteComponent extends Component {
 
   componentDidMount() {
     this.props.addTodo("testing")
-
+    console.log(api.GET('https://jsonplaceholder.typicode.com/posts'))
   }
 
   componentWillUnmount() {

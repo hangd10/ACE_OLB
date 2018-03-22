@@ -2,8 +2,6 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import styles from '../contactInfoStyles.css'
 
-console.log(styles)
-
 let ContactInfoRender = ( props ) => {
     const { handleSubmit } = props;
 

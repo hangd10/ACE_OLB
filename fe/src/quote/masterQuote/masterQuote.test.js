@@ -17,6 +17,7 @@ import { createMockStore } from 'redux-test-utils';
 import * as actions from './actions';
 import * as types from './actionTypes';
 import reducer from './reducer/index.js';
+import api from '../../common/APIclient'
 
 
 
@@ -105,6 +106,10 @@ describe('MasterQuote', () => {
       const updateObj = {  type: types.ADD_TODO, payload: text }
 
       expect(2).to.equal(2);
+
+    });
+
+    it ('returns 200 from server POST', () => {
 
     });
 
