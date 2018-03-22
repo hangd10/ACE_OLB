@@ -102,7 +102,7 @@ describe('Contact Information Test Form', () => {
       // let POST = api.POST(urlMock, dataMock, headerMock);
       let expectedPOST = 200;
 
-      // expect(POST).to.equal(expectedPOST);
+      // expect(POST.status).to.equal(expectedPOST);
 
 
     })

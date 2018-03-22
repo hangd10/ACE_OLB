@@ -4,27 +4,33 @@ import axios from 'axios'
 
 var API = {
 
-  POST: (url, data, config) => {
+  POST: (url, data, config, callback) => {
 
-    axios.post( url, JSON.stringify(data), config )
-    .then(function(resp){
-      console.log(resp)
-    })
-    .catch(function(err){
-      console.log(err)
-    })
+    axios.post( url, data, config )
+      .then(resp => {
+        console.log(resp)
+        // callback(resp)
+        return resp
+
+      })
+      .catch(err => {
+        console.log(err)
+      })
 
   },
 
-  GET: (url) => {
+  GET: (url, data, callback) => {
 
-    axios.get(url)
-    .then(resp => {
-      console.log(resp)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    axios.get(url, data)
+      .then(resp => {
+        console.log(resp)
+        // callback(resp)
+        return resp
+
+      })
+      .catch(err => {
+        console.log(err)
+      })
 
   }
 
