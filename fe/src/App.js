@@ -30,6 +30,8 @@ class App extends Component {
 
         <Switch>
           <Route path='/quote' component={MasterQuoteComponent}/>
+
+          <Route path='/' component={MasterQuoteComponent}/>
         </Switch>
 
       </div>

@@ -4,7 +4,6 @@ import { BasicStrategy } from 'passport-http'
 import { Strategy as BearerStrategy } from 'passport-http-bearer'
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
 import { jwtSecret, masterKey } from '../../config'
-import * as githubService from '../github'
 import * as googleService from '../google'
 import User, { schema } from '../../api/user/model'
 
@@ -20,9 +19,6 @@ export const password = () => (req, res, next) =>
       next()
     })
   })(req, res, next)
-
-export const github = () =>
-  passport.authenticate('github', { session: false })
 
 export const google = () =>
   passport.authenticate('google', { session: false })
@@ -58,15 +54,6 @@ passport.use('password', new BasicStrategy((email, password, done) => {
       return null
     }).catch(done)
   })
-}))
-
-passport.use('github', new BearerStrategy((token, done) => {
-  githubService.getUser(token).then((user) => {
-    return User.createFromService(user)
-  }).then((user) => {
-    done(null, user)
-    return null
-  }).catch(done)
 }))
 
 passport.use('google', new BearerStrategy((token, done) => {
