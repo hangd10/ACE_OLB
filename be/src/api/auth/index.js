@@ -21,19 +21,6 @@ router.post('/',
   login)
 
 /**
- * @api {post} /auth/github Authenticate with Github
- * @apiName AuthenticateGithub
- * @apiGroup Auth
- * @apiParam {String} access_token Github user accessToken.
- * @apiSuccess (Success 201) {String} token User `access_token` to be passed to other requests.
- * @apiSuccess (Success 201) {Object} user Current user's data.
- * @apiError 401 Invalid credentials.
- */
-router.post('/github',
-  github(),
-  login)
-
-/**
  * @api {post} /auth/google Authenticate with Google
  * @apiName AuthenticateGoogle
  * @apiGroup Auth
