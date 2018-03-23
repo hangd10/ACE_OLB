@@ -19,6 +19,8 @@ const zipCode = '';
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Quote not found.
  * @apiError 401 master access only.
+ * 
+ * CURL Command Test - curl -X POST -d '{ "email" : "dh@aaa.com", "zipCode" : 90210 }' -H "Content-Type: application/json"  http://0.0.0.0:9000/api/dummy
  */
 router.post('/',
   body({ email, zipCode }),
