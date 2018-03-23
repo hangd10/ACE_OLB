@@ -9,11 +9,33 @@ class ContactInfoComponent extends Component {
 
     constructor(props) {
 
-        super(props);
+        super(props)
+
+        this.state = {
+            emailInputVal: "",
+            zipCodeInputVal: 10000
+        }
+
       }
 
+    componentDidMount() {
+      console.log("this: ", this)
+
+    }
+
+    validateEmailVal = () => {
+      let val = this.state.emailInputVal;
+      val = val.slice(val.length-4, val.length);
+
+    }
+
     handleComponentSubmit = values => {
-      this.props.goToVehicleInfo(values);
+      this.validateEmailVal();
+    }
+
+    handleEmailInputVal = e => {
+      console.log(e.target.value, this)
+      this.setState({emailInputVal: e.target.value})
     }
 
     logInput = e => {
@@ -25,6 +47,7 @@ class ContactInfoComponent extends Component {
         <ContactInfoRender
           onSubmit ={ this.handleComponentSubmit }
           logCompInput = { this.logInput }
+          handleEmailInputVal = { this.handleEmailInputVal }
         />
       );
     }

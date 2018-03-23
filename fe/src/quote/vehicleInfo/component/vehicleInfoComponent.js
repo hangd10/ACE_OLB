@@ -9,9 +9,11 @@ class VehicleInfoComponent extends Component {
 
     constructor(props) {
       super(props);
+
     }
 
     componentDidMount() {
+      console.log("this: ", this)
       // console.log(`VehicleInfoComponent contact info from redux store ${ JSON.stringify(this.props.contact) }`);
     }
 

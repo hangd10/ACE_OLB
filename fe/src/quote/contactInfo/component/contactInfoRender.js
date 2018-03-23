@@ -38,7 +38,7 @@ let ContactInfoRender = ( props ) => {
           /> */}
           <div>
 
-            <input className="blockLayout" type="text" placeholder="email" name="email" id="emailInput"/>
+            <input className="blockLayout" type="text" placeholder="email" name="email" id="emailInput" onChange={props.handleEmailInputVal}/>
 
             <sup className="errorScript" id="emailInputError">your email is invalid</sup>
 

@@ -67,7 +67,6 @@ describe('Contact Information Test Form', () => {
 
     });
 
-    /*
     it('error handing for email input - .com at end', () => {
       // must have .com at end
       const test1 = "aaa@aaa-calif.rom"
@@ -86,6 +85,7 @@ describe('Contact Information Test Form', () => {
 
     });
 
+    /*
     it('error handing for email input - must have @ symbol', () => {
       //must have @ symbol
       // const test2;
