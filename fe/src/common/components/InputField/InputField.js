@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /***
 Input Field Component Props:
@@ -41,5 +42,16 @@ const InputField = ({ onChangeHandler, classNames, inputType, placeHolder, input
     </div>
 
 )};
+
+InputField.propTypes = {
+  onChangeHandler: PropTypes.func,
+  classNames: PropTypes.string,
+  inputType: PropTypes.string.isRequired,
+  placeHolder: PropTypes.string.isRequired,
+  inputName: PropTypes.string.isRequired,
+  inputID: PropTypes.string,
+  throwError: PropTypes.bool.isRequired,
+
+}
 
 export default InputField;
