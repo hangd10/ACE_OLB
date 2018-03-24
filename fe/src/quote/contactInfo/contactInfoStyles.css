@@ -3,10 +3,11 @@
   font-size: 10px;
   color: red;
   visibility: hidden;
+  display: block;
 }
 
 .throwError {
-  visibility: visible;  
+  visibility: visible;
 }
 
 .blockLayout {
