@@ -5,8 +5,6 @@ import styles from '../menuStyles.css'
 
 let MenuRender = ( props ) => {
 
-    console.log("menu render: ", props)
-
     return (
 
       <ul

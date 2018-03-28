@@ -17,16 +17,13 @@ class App extends Component {
 
   updateLangEn = () => {
     this.props.updateLang("en")
-    console.log("updated: ", this)
   }
 
   updateLangEs = () => {
     this.props.updateLang("es")
-    console.log("updated: ", this)
   }
 
   render() {
-    console.log("app connet: ", this)
 
     const lang = appLang[this.props.lang]
 
@@ -64,6 +61,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators( actions, dispatch, {} );
 }
 
-
-// export default App;
 export default connect(mapStateToProps, mapDispatchToProps)(App);
