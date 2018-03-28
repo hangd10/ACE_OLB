@@ -1,4 +1,12 @@
 
+#contactInfoForm {
+    padding: 5% 0;
+    background-color: grey;
+    width: 80%;
+    margin: 3.5% auto;
+    border-radius: 10px;
+}
+
 .errorScript {
   font-size: 10px;
   color: red;

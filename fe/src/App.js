@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import appLang from './appLang'
+import appLang from './app.lang.js'
 import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
 import { Switch, Route } from 'react-router-dom'

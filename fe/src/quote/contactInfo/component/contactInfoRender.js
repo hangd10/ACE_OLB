@@ -2,40 +2,45 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import styles from '../contactInfoStyles.css'
 
+import contactInfoLang from '../contactInfo.lang.js'
 import Input from '../../../common/components/InputField/InputField'
 
 
 let ContactInfoRender = ( props ) => {
-    const { handleSubmit } = props;
+
+    const lang = contactInfoLang[props.language]
 
     return (
-        <form onSubmit={ handleSubmit }>
+        <form id={"contactInfoForm"} >
 
           <Input
-            onChangeHandler = {props.logCompInput}
-            // classNames = {}
-            inputType = { "number" }
-            placeHolder = { "00000" }
-            inputName = { "zip" }
-            inputID = { "zipInput" }
-            throwError = { true }
+            inputID={"zipInput"}
+            className={"contactInfoField"}
+            title={lang.fields.zip.title}
+            placeholder={lang.fields.zip.placeholder}
+            maxLength={5}
+            icon={null}
+            errorMessage={lang.fields.zip.errorMessage}
+            onChange={props.handleZipInputVal}
+            typeAttr={"number"}
           />
 
           <br/>
 
           <Input
-            onChangeHandler = {props.logCompInput}
-            // classNames = {}
-            inputType = { "text" }
-            placeHolder = { "Email" }
-            inputName = { "email" }
-            inputID = { "emailInput" }
-            throwError = { true }
+            inputID={"emailInput"}
+            className={"contactInfoField"}
+            title={lang.fields.email.title}
+            placeholder={lang.fields.zip.placeholder}
+            icon={null}
+            errorMessage={lang.fields.zip.errorMessage}
+            onChange={props.handleEmailInputVal}
+            typeAttr={"text"}
           />
 
           <br/>
 
-          <button id="submitId" type="submit">Submit</button>
+          <button id="submitId" type="submit">{lang.submit}</button>
 
         </form>
 

@@ -29,22 +29,29 @@ class ContactInfoComponent extends Component {
     }
 
     handleComponentSubmit = values => {
-      this.validateEmailVal();
+      console.log("props: ", this)
+      // this.validateEmailVal();
     }
 
     handleEmailInputVal = e => {
       this.setState({emailInputVal: e.target.value})
     }
 
+    handleZipInputVal = e => {
+      this.setState({zipCodeInputVal: e.target.value})
+    }
+
     logInput = e => {
+      console.log("input: ", e.target.value)
     }
 
     render() {
       return (
         <ContactInfoRender
-          onSubmit ={ this.handleComponentSubmit }
-          logCompInput = { this.logInput }
-          handleEmailInputVal = { this.handleEmailInputVal }
+          onSubmit={this.handleComponentSubmit}
+          handleZipInputVal={this.handleZipInputVal}
+          handleEmailInputVal={this.handleEmailInputVal}
+          language={this.props.lang}
         />
       );
     }
@@ -53,7 +60,8 @@ class ContactInfoComponent extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    contact: state.contact
+    contact: state.contact,
+    lang: state.analytics.language    
   };
 }
 
