@@ -13,7 +13,9 @@ const appLang = {
         path: "/es"
       },
     ],
-    cta: "Click here to begin"
+    cta: "Click here to begin",
+    english: "English",
+    spanish: "Spanish"
   },
 
   es:{
@@ -28,7 +30,9 @@ const appLang = {
         path: "/es"
       },
     ],
-    cta: "Haga clic aquí para comenzar"
+    cta: "Haga clic aquí para comenzar",
+    english: "Inglés",
+    spanish: "Español"
   }
 
 }

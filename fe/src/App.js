@@ -36,9 +36,9 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">{lang.banner}</h1>
 
-          <ul>
-            <li onClick={this.updateLangEn}>English</li>
-            <li onClick={this.updateLangEs}>Spanish</li>
+          <ul className={"menuList"}>
+            <li className={"menuItem"} onClick={this.updateLangEn}>{lang.english}</li>
+            <li className={"menuItem"} onClick={this.updateLangEs}>{lang.spanish}</li>
           </ul>
 
         </header>

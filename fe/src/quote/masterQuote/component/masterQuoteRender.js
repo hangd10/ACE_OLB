@@ -25,10 +25,8 @@ let MasterQuoteRender = ( props ) => {
         <p className="intro"> {lang.intro} </p>
 
         <Switch>
-
           <Route path='/quote/contact' component={ContactInfoComponent}/>
           <Route path='/quote/vehicle' component={VehicleInfoComponent}/>
-
         </Switch>
 
 
