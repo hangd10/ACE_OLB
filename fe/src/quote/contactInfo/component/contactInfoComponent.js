@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
 
+import contactInfoLang from '../contactInfo.lang.js'
 import ContactInfoRender from './contactInfoRender'
-import * as actions from '../actions';
+import * as actions from '../reducer/actions';
 
 class ContactInfoComponent extends Component {
 
@@ -16,6 +17,9 @@ class ContactInfoComponent extends Component {
             "zipInputVal": 10000
         }
 
+        this.validEmail = null;
+        this.validZip = null;
+
       }
 
     componentDidMount() {
@@ -23,14 +27,31 @@ class ContactInfoComponent extends Component {
     }
 
     validateEmailVal = () => {
-      let val = this.state.emailInputVal;
-      val = val.slice(val.length-4, val.length);
+      var isValidEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.state.emailInputVal)
+
+      if (isValidEmail){
+        this.invalidEmail = false
+        this.props.assignEmail(this.state.emailInputVal)
+      }
+      else{ this.invalidEmail = true }
+
+    }
+
+    validateZipVal = () => {
+      var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.state.zipInputVal);
+
+      if (isValidZip){
+        this.invalidZip = false
+        this.props.assignZip(this.state.zipInputVal)
+      }
+      else{ this.invalidZip = true }
 
     }
 
     handleComponentSubmit = values => {
-      console.log("props: ", this)
-      // this.validateEmailVal();
+      this.validateZipVal()
+      this.validateEmailVal()
+
     }
 
     logInput = e => {
@@ -41,18 +62,41 @@ class ContactInfoComponent extends Component {
       updatedState[stateProp] = field.value
       this.setState(updatedState)
 
-      console.log("updatedState: ", this.state)
-
-
     }
 
     render() {
+
+      const lang = contactInfoLang[this.props.lang]
+      const zipFieldConfig = {
+        inputID: "zipInput",
+        className: "contactInfoField",
+        title: lang.fields.zip.title,
+        placeholder: lang.fields.zip.placeholder,
+        maxLength: 5,
+        icon: null,
+        errorMessage: lang.fields.zip.errorMessage,
+        onChange: this.logInput,
+        typeAttr: "number",
+        throwError: this.invalidZip,
+      }
+      const emailFieldConfig = {
+        inputID: "emailInput",
+        className: "contactInfoField",
+        title: lang.fields.email.title,
+        placeholder: lang.fields.email.placeholder,
+        icon: null,
+        errorMessage: lang.fields.email.errorMessage,
+        onChange: this.logInput,
+        typeAttr: "text",
+        throwError: this.invalidEmail,
+      }
+
       return (
         <ContactInfoRender
+          zipField={zipFieldConfig}
+          emailField={emailFieldConfig}
+          submitText={lang.submit}
           onSubmit={this.handleComponentSubmit}
-          handleZipInputVal={this.logInput}
-          handleEmailInputVal={this.logInput}
-          language={this.props.lang}
         />
       );
     }
@@ -61,7 +105,7 @@ class ContactInfoComponent extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    contact: state.contact,
+    contact: state,
     lang: state.analytics.language
   };
 }

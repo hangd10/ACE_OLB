@@ -1,16 +1,26 @@
-import * as actions from '../actions';
+import * as actions from './actions';
+import * as types from './actionTypes';
 
-export default function(state = { }, action) {
-    //console.log(`------------ Contact Info Reducer Action ${ JSON.stringify(action) } state ${ JSON.stringify(state) }`);
+
+
+const initialState = {
+  email: "",
+  zipcode: 10000,
+}
+
+export default function(state = initialState, action) {
 
     switch(action.type) {
-        case actions.GO_TO_VEHICLE_INFO : {
-            return {
-                ...state
-                ,contact : action.payload
-            };
-        }
 
-        default : { return state; }
+        case types.ASSIGN_EMAIL :
+            return { ...state, email: action.payload }
+
+        case types.ASSIGN_ZIP :
+            return { ...state, zipcode: action.payload }
+
+        default :
+          return state;
+          
     }
+
 }

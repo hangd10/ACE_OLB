@@ -16,7 +16,6 @@ class MasterQuoteComponent extends Component {
 
   componentDidMount() {
     this.props.addTodo("testing")
-    console.log("testing: ", this)
     // const dataMock = {
     //   userEmail: "bob@aaa-calif.com",
     //   zipCode: 12345
