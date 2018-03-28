@@ -13,7 +13,7 @@ let MasterQuoteRender = ( props ) => {
 
   console.log("master render")
 
-    const lang = masterQuoteLang.en
+    const lang = masterQuoteLang[props.language]
 
     return (
       <div>

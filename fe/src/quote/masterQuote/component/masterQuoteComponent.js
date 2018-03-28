@@ -16,7 +16,7 @@ class MasterQuoteComponent extends Component {
 
   componentDidMount() {
     this.props.addTodo("testing")
-    console.log("testing")
+    console.log("testing: ", this)
     // const dataMock = {
     //   userEmail: "bob@aaa-calif.com",
     //   zipCode: 12345
@@ -35,7 +35,9 @@ class MasterQuoteComponent extends Component {
 
   render() {
     return (
-      <MasterQuoteRender />
+      <MasterQuoteRender
+        language={this.props.lang}
+      />
     );
   }
 }
@@ -48,9 +50,9 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = ( state ) => {
   return {
-    masterQuote: state
+    masterQuote: state,
+    lang: state.analytics.language
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MasterQuoteComponent)
-// export default MasterQuoteComponent;
