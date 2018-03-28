@@ -1,0 +1,12 @@
+
+.quoteMenu.menuItem a {
+  color: #222;
+}
+
+.intro {
+  margin: auto;
+  padding: 0 9.5%;
+  opacity: 0.75;
+  line-height: 1.25em;
+  font-size: .95em
+}

@@ -14,6 +14,7 @@ class MenuComponent extends Component {
     }
 
     componentDidMount(){
+      console.log("new menu: ", this)
     }
 
     render() {
