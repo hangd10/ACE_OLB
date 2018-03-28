@@ -1,57 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/***
-Input Field Component Props:
 
-  onChange[function] - call to trigger on input val change
-  classNames[string] - css class names (comma seperated string)
-  type[input field type] - html input field type
-  placeholder[string] - placeholder text in input field
-  name[string] - html input field name
-  id[string] - html element id string
-
-  Pass props as object into stateless component.
-
-
-***/
-
-
-const InputField = ({ onChangeHandler, classNames, inputType, placeHolder, inputName, inputID, throwError }) => {
-
+const InputField = ({ inputID, className, labelClassName, title, placeholder, value, maxLength, icon, errorMessage, onChange, onFocus, onBlur, typeAttr }) => {
+  let inputItem;
   return (
-
-    <div>
-
-      <input
-        onChange={onChangeHandler}
-        className={classNames + "blockLayout"}
-        type={inputType}
-        placeholder={placeHolder}
-        name={inputName}
-        id={inputID}
-      />
-
-
-      { throwError ?
-        (<sup className="errorScript throwError" id={inputID+ "InputError"}>
-          {inputName} is invalid
-        </sup>) : null }
-
-
+    <div className={className}>
+      <label
+          id={inputID + "Label"}
+          className={labelClassName}
+          onClick={() => { inputItem.focus(); }}>
+        {title}
+      </label>
+      <div className="inputContainer">
+        <input
+          id={ inputID }
+          className="inputElement"
+          placeholder={placeholder}
+          ref={(input) => { inputItem = input; }}
+          onChange={onChange}
+          value={value}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          maxLength={maxLength}
+          type={typeAttr}
+        />
+        {icon}
+      </div>
+      <label className="inputFieldErrorMessage">
+        {errorMessage}
+      </label>
     </div>
-
-)};
+  );
+};
 
 InputField.propTypes = {
-  onChangeHandler: PropTypes.func,
-  classNames: PropTypes.string,
-  inputType: PropTypes.string.isRequired,
-  placeHolder: PropTypes.string.isRequired,
-  inputName: PropTypes.string.isRequired,
   inputID: PropTypes.string,
-  throwError: PropTypes.bool.isRequired,
-
-}
+  className: PropTypes.string,
+  labelClassName: PropTypes.string,
+  title: PropTypes.string,
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  maxLength: PropTypes.string,
+  icon: PropTypes.object,
+  errorMessage: PropTypes.string,
+  typeAttr: PropTypes.string,
+};
 
 export default InputField;

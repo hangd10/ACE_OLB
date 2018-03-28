@@ -13,7 +13,6 @@ class VehicleInfoComponent extends Component {
     }
 
     componentDidMount() {
-      console.log("this: ", this)
       // console.log(`VehicleInfoComponent contact info from redux store ${ JSON.stringify(this.props.contact) }`);
     }
 

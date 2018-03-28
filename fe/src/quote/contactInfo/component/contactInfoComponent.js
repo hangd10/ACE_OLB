@@ -19,7 +19,6 @@ class ContactInfoComponent extends Component {
       }
 
     componentDidMount() {
-      console.log("this: ", this)
 
     }
 
@@ -34,12 +33,10 @@ class ContactInfoComponent extends Component {
     }
 
     handleEmailInputVal = e => {
-      console.log(e.target.value, this)
       this.setState({emailInputVal: e.target.value})
     }
 
     logInput = e => {
-      console.log(e.target.value)
     }
 
     render() {
