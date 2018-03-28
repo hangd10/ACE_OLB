@@ -12,8 +12,8 @@ class ContactInfoComponent extends Component {
         super(props)
 
         this.state = {
-            emailInputVal: "",
-            zipCodeInputVal: 10000
+            "emailInputVal": "",
+            "zipInputVal": 10000
         }
 
       }
@@ -33,24 +33,25 @@ class ContactInfoComponent extends Component {
       // this.validateEmailVal();
     }
 
-    handleEmailInputVal = e => {
-      this.setState({emailInputVal: e.target.value})
-    }
-
-    handleZipInputVal = e => {
-      this.setState({zipCodeInputVal: e.target.value})
-    }
-
     logInput = e => {
-      console.log("input: ", e.target.value)
+      let field = e.target
+      let stateProp = field.id + "Val"
+      let updatedState = {}
+
+      updatedState[stateProp] = field.value
+      this.setState(updatedState)
+
+      console.log("updatedState: ", this.state)
+
+
     }
 
     render() {
       return (
         <ContactInfoRender
           onSubmit={this.handleComponentSubmit}
-          handleZipInputVal={this.handleZipInputVal}
-          handleEmailInputVal={this.handleEmailInputVal}
+          handleZipInputVal={this.logInput}
+          handleEmailInputVal={this.logInput}
           language={this.props.lang}
         />
       );
@@ -61,7 +62,7 @@ class ContactInfoComponent extends Component {
 const mapStateToProps = (state) => {
   return {
     contact: state.contact,
-    lang: state.analytics.language    
+    lang: state.analytics.language
   };
 }
 

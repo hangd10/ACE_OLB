@@ -23,6 +23,7 @@ let ContactInfoRender = ( props ) => {
             errorMessage={lang.fields.zip.errorMessage}
             onChange={props.handleZipInputVal}
             typeAttr={"number"}
+            throwError={false}
           />
 
           <br/>
@@ -31,11 +32,12 @@ let ContactInfoRender = ( props ) => {
             inputID={"emailInput"}
             className={"contactInfoField"}
             title={lang.fields.email.title}
-            placeholder={lang.fields.zip.placeholder}
+            placeholder={lang.fields.email.placeholder}
             icon={null}
-            errorMessage={lang.fields.zip.errorMessage}
+            errorMessage={lang.fields.email.errorMessage}
             onChange={props.handleEmailInputVal}
             typeAttr={"text"}
+            throwError={false}
           />
 
           <br/>
