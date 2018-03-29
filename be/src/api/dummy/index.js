@@ -1,29 +1,41 @@
 import { Router } from 'express'
-import { middleware as body } from 'bodymen'
-import { stub } from './controller'
+import { middleware as query } from 'querymen'
+import { create, index, show } from './controller'
 
 const router = new Router()
 
-const email = '';
-const zipCode = '';
-
 /**
- * @api {post} /quotes Create quote
- * @apiName CreateQuote
- * @apiGroup Quote
- * @apiPermission master
- * @apiParam {String} access_token master access token.
- * @apiParam email Quote's email.
- * @apiParam zipCode Quote's zipCode.
- * @apiSuccess {Object} quote Quote's data.
+ * @api {post} /dummies Create dummy
+ * @apiName CreateDummy
+ * @apiGroup Dummy
+ * @apiSuccess {Object} dummy Dummy's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 404 Quote not found.
- * @apiError 401 master access only.
- * 
- * CURL Command Test - curl -X POST -d '{ "email" : "dh@aaa.com", "zipCode" : 90210 }' -H "Content-Type: application/json"  http://0.0.0.0:9000/api/dummy
+ * @apiError 404 Dummy not found.
  */
 router.post('/',
-  body({ email, zipCode }),
-  stub)
+  create)
+
+/**
+ * @api {get} /dummies Retrieve dummies
+ * @apiName RetrieveDummies
+ * @apiGroup Dummy
+ * @apiUse listParams
+ * @apiSuccess {Object[]} dummies List of dummies.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ */
+router.get('/',
+  query(),
+  index)
+
+/**
+ * @api {get} /dummies/:id Retrieve dummy
+ * @apiName RetrieveDummy
+ * @apiGroup Dummy
+ * @apiSuccess {Object} dummy Dummy's data.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError 404 Dummy not found.
+ */
+router.get('/:id',
+  show)
 
 export default router

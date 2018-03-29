@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import user from './user'
-import auth from './auth'
 import dummy from './dummy'
 
 const router = new Router()
+
+router.use('/dummies', dummy)
 
 /**
  * @apiDefine master Master access only
@@ -28,8 +28,5 @@ const router = new Router()
  * @apiParam {String[]} [sort=-createdAt] Order of returned items.
  * @apiParam {String[]} [fields] Fields to be returned.
  */
-router.use('/users', user)
-router.use('/auth', auth)
-router.use('/dummy', dummy)
 
 export default router

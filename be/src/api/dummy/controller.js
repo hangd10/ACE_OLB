@@ -1,13 +1,9 @@
-import { success } from '../../services/response/'
 
-export const stub = ({ bodymen: { body } }, res, next) => {
-  console.log(`Stub it out ${ JSON.stringify(body) }`);
+export const create = ({ body }, res, next) =>
+  res.status(201).json(body)
 
-  return new Promise( (resolve, reject) => {
-      resolve(body);
-    })
-    .then(success(res, 201))
-    .catch(next)
-  }
+export const index = ({ querymen: { query, select, cursor } }, res, next) =>
+  res.status(200).json([])
 
-
+export const show = ({ params }, res, next) =>
+  res.status(200).json({})
