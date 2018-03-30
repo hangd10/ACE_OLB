@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import ContactInfoRender from './contactInfoRender'
 import * as actions from '../actions';
 
+import ContactFormConfigs from '../constants'
+
 class ContactInfoComponent extends Component {
 
     constructor(props) {
@@ -19,7 +21,6 @@ class ContactInfoComponent extends Component {
       }
 
     componentDidMount() {
-
     }
 
     validateEmailVal = () => {
@@ -45,6 +46,7 @@ class ContactInfoComponent extends Component {
           onSubmit ={ this.handleComponentSubmit }
           logCompInput = { this.logInput }
           handleEmailInputVal = { this.handleEmailInputVal }
+          { ...ContactFormConfigs }
         />
       );
     }

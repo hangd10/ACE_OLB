@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const InputField = ({ inputID, className, labelClassName, title, placeholder, value, maxLength, icon, errorMessage, onChange, onFocus, onBlur, typeAttr }) => {
+const InputField = ({ inputID, title, placeholder, value, maxLength, icon, errorMessage, onChange, onFocus, onBlur, typeAttr }) => {
   let inputItem;
   return (
-    <div className={className}>
+    <div className="inputFieldContainer">
       <label
           id={inputID + "Label"}
-          className={labelClassName}
+          className={inputID + "labelClass"}
           onClick={() => { inputItem.focus(); }}>
         {title}
       </label>
@@ -48,6 +48,12 @@ InputField.propTypes = {
   icon: PropTypes.object,
   errorMessage: PropTypes.string,
   typeAttr: PropTypes.string,
+
+  // customProp: function(props, propName, componentName) {
+  //   if (props[propName] !== undefined && !/matchme/.test(props[propName])) {
+  //     return new Error(`${ props[propName] } is required.`);
+  //   }
+  // }
 };
 
 export default InputField;

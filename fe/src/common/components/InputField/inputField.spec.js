@@ -69,6 +69,16 @@ describe('Input Field Component', () => {
     );
   });
 
+/* ===== RETURN MARIAH AND EDIE AND DAVID ====== */
+
+  it('should throw error if inputID is empty', () => {
+    // let wrapper = shallow(<InputField />);
+
+  });
+
+/* ===== RETURN MARIAH AND EDIE AND DAVID ====== */
+
+
   it('should render label, input, and error field', () => {
     subject.find('label').length.should.equal(2);
     subject.find('input').length.should.equal(1);

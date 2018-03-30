@@ -4,40 +4,17 @@ import styles from '../contactInfoStyles.css'
 import InputField from '../../../common/components/InputField/inputField'
 
 let ContactInfoRender = ( props ) => {
-    const { handleSubmit } = props;
-
     return (
-        <form onSubmit={ handleSubmit }>
-        {/*
+        <form>
 
-          <Input
-            onChangeHandler = {props.logCompInput}
-            // classNames = {}
-            inputType = { "number" }
-            placeHolder = { "00000" }
-            inputName = { "zip" }
-            inputID = { "zipInput" }
-            throwError = { true }
-          />
-
-          <br/>
-          */}
-
-            <InputField
+            <InputField { ...props.emailInputObj }
               onChangeHandler = {props.logCompInput}
-              labelClassName = { "eMailLabelClass" }
-              className = { "eMailClass" }
-              title = { "eMail" }
-              value = { "" }
-              icon = { null }
-              maxLenth = { "100" }
-              inputType = { "text" }
-              placeHolder = { "Email" }
-              inputName = { "email" }
-              inputID = { "emailInputId" }
-              throwError = { true }
-              errorMessage = { "eMail is invalid" }
             />
+            <br/>
+            <InputField { ...props.zipInputObj }
+            />
+
+            <br/>
 
           <button id="submitId" type="submit">Submit</button>
 
