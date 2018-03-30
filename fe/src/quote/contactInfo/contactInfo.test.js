@@ -17,7 +17,7 @@ import api from '../../common/APIclient'
 
 
 
-describe('Contact Information Test Form', () => {
+describe('Contact Information Test Form Component', () => {
     let wrapper;
     let store;
     let handleSubmit;
@@ -29,11 +29,14 @@ describe('Contact Information Test Form', () => {
 
         ;
         store = createStore(combineReducers({ form :  formReducer }));
+
         wrapper = mount(
             <Provider store={store}>
               <ContactInfoComponent handleSubmit={handleSubmit} />
             </Provider>
         );
+
+
         mock = new MockAdapter(axios);
 
     });
@@ -53,12 +56,7 @@ describe('Contact Information Test Form', () => {
 
     });
 
-    it('verify instace of email field', () => {
-      let zipInputLength = wrapper.find('input[name="email"]').length;
-
-      expect(zipInputLength).to.eql(1);
-
-    });
+    /*
 
     it('verify instace of zipcode field', () => {
       let zipInputLength = wrapper.find('input[name="zip"]').length;
@@ -66,6 +64,7 @@ describe('Contact Information Test Form', () => {
       expect(zipInputLength).to.eql(1);
 
     });
+
 
     it('error handing for email input - .com at end', () => {
       // must have .com at end
@@ -85,7 +84,6 @@ describe('Contact Information Test Form', () => {
 
     });
 
-    /*
     it('error handing for email input - must have @ symbol', () => {
       //must have @ symbol
       // const test2;
@@ -95,7 +93,6 @@ describe('Contact Information Test Form', () => {
 
 
     });
-    */
 
     it('server returns a 200 on post call', () => {
       const urlMock = "https://jsonplaceholder.typicode.com/posts"
@@ -120,6 +117,7 @@ describe('Contact Information Test Form', () => {
 
     })
 
+    */
 
 
 

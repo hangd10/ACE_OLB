@@ -14,7 +14,7 @@ const InputField = ({ inputID, className, labelClassName, title, placeholder, va
       </label>
       <div className="inputContainer">
         <input
-          id={ inputID }
+          id={inputID}
           className="inputElement"
           placeholder={placeholder}
           ref={(input) => { inputItem = input; }}

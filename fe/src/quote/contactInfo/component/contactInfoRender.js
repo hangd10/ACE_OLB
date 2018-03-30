@@ -1,15 +1,14 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
 import styles from '../contactInfoStyles.css'
 
-import Input from '../../../common/components/InputField/InputField'
-
+import InputField from '../../../common/components/InputField/inputField'
 
 let ContactInfoRender = ( props ) => {
     const { handleSubmit } = props;
 
     return (
         <form onSubmit={ handleSubmit }>
+        {/*
 
           <Input
             onChangeHandler = {props.logCompInput}
@@ -22,18 +21,23 @@ let ContactInfoRender = ( props ) => {
           />
 
           <br/>
+          */}
 
-          <Input
-            onChangeHandler = {props.logCompInput}
-            // classNames = {}
-            inputType = { "text" }
-            placeHolder = { "Email" }
-            inputName = { "email" }
-            inputID = { "emailInput" }
-            throwError = { true }
-          />
-
-          <br/>
+            <InputField
+              onChangeHandler = {props.logCompInput}
+              labelClassName = { "eMailLabelClass" }
+              className = { "eMailClass" }
+              title = { "eMail" }
+              value = { "" }
+              icon = { null }
+              maxLenth = { "100" }
+              inputType = { "text" }
+              placeHolder = { "Email" }
+              inputName = { "email" }
+              inputID = { "emailInputId" }
+              throwError = { true }
+              errorMessage = { "eMail is invalid" }
+            />
 
           <button id="submitId" type="submit">Submit</button>
 
@@ -41,9 +45,5 @@ let ContactInfoRender = ( props ) => {
 
     )
 }
-
-ContactInfoRender = reduxForm({
-    form : 'ContactForm'
-})(ContactInfoRender);
 
 export default ContactInfoRender;
