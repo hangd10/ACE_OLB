@@ -80,8 +80,15 @@ describe('Input Field Component', () => {
 
 
   it('should render label, input, and error field', () => {
-    subject.find('label').length.should.equal(2);
+    subject.find('label').length.should.equal(1);
     subject.find('input').length.should.equal(1);
+  });
+
+  it('should not render error label', () => {
+    let errorLabelID = inputID + "ErrorMessage"
+    let errorLabel = subject.find('label#' + errorLabelID);
+
+    errorLabel.length.should.equal(0)
   });
 
   it('should have label that matches title', () => {
@@ -106,10 +113,6 @@ describe('Input Field Component', () => {
 
     subject.find('label#' + labelID).simulate('click');
     document.activeElement.getAttribute('id').should.equal(inputID);
-  });
-
-  it('should have a provided error message', () => {
-    subject.find('.inputFieldErrorMessage').text().should.equal('SomeError');
   });
 
   it('should have type attribute', () => {

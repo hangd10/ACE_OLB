@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const InputField = ({ inputID, title, placeholder, value, maxLength, icon, errorMessage, onChange, onFocus, onBlur, typeAttr }) => {
+const InputField = ({ inputID, title, placeholder, value, maxLength, icon, errorMessage, onChange, onFocus, onBlur, typeAttr, throwError=false }) => {
   let inputItem;
   return (
     <div className="inputFieldContainer">
@@ -27,9 +27,15 @@ const InputField = ({ inputID, title, placeholder, value, maxLength, icon, error
         />
         {icon}
       </div>
-      <label className="inputFieldErrorMessage">
-        {errorMessage}
-      </label>
+      {throwError ?
+        <label
+          className="inputFieldErrorMessage"
+          id={inputID + "ErrorMessage"}
+        >
+          {errorMessage}
+        </label> :
+        null
+      }
     </div>
   );
 };
