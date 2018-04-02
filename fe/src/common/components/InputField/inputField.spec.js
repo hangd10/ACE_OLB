@@ -5,6 +5,7 @@ import Chai from 'chai';
 import Sinon from 'sinon';
 import jsdom from 'jsdom';
 
+import * as v from './InputValidation'
 
 Chai.should();
 
@@ -19,52 +20,38 @@ configure({ adapter: new Adapter() });
 describe('Input Field Component', () => {
   let subject;
   let spyOnChange;
+  let spyOnBlur;
   let stubOnFocus;
 
-  let inputID;
-  let className;
-  let labelClassName;
-  let title;
-  let placeholder;
-  let value;
-  let maxLenth;
-  let icon;
-  let errorMessage;
-  let typeAttr;
+  let dummyConfig;
 
   beforeEach(() => {
 
     // global.document = jsdom.jsdom('<head></head><body></body>');
 
     spyOnChange = Sinon.spy();
+    spyOnBlur = Sinon.spy();
     stubOnFocus = Sinon.stub();
 
-    inputID = "TestField"
-    labelClassName = "LabelClass"
-    className = "SomeClass"
-    title = "MyInput"
-    placeholder = "EnterHere"
-    value = "InitialValue"
-    maxLenth = "100"
-    icon = null
-    errorMessage = "SomeError"
-    typeAttr = "SuperType"
+    dummyConfig = {
+      inputID: "TestField",
+      labelClassName: "LabelClass",
+      className: "SomeClass",
+      title: "MyInput",
+      placeholder: "EnterHere",
+      value: "InitialValue",
+      maxLenth: "100",
+      icon: null,
+      errorMessage: "SomeError",
+      typeAttr: "SuperType",
+      onChange: spyOnChange,
+      onBlur: spyOnBlur,
+      validate: [v.required, v.validEmail]
+    }
 
     subject = mount(
       <InputField
-        inputID={inputID}
-        className={className}
-        labelClassName={labelClassName}
-        title={title}
-        placeholder={placeholder}
-        value={value}
-        maxLength={maxLenth}
-        icon={icon}
-        errorMessage={errorMessage}
-        onChange={spyOnChange}
-        onFocus={stubOnFocus}
-        onBlur={() => { }}
-        typeAttr={typeAttr}
+        { ...dummyConfig }
       />
     );
   });
@@ -85,14 +72,14 @@ describe('Input Field Component', () => {
   });
 
   it('should not render error label', () => {
-    let errorLabelID = inputID + "ErrorMessage"
+    let errorLabelID = dummyConfig.inputID + "ErrorMessage"
     let errorLabel = subject.find('label#' + errorLabelID);
 
     errorLabel.length.should.equal(0)
   });
 
   it('should have label that matches title', () => {
-    let labelID = inputID + "Label"
+    let labelID = dummyConfig.inputID + "Label"
 
     subject.find('label#' + labelID).text().should.equal('MyInput');
   });
@@ -102,23 +89,35 @@ describe('Input Field Component', () => {
   });
 
   it('should call onChange when input updates', () => {
-    subject.find('input#' + inputID).simulate('change', { value: 'My new value' });
+    subject.find('input#' + dummyConfig.inputID).simulate('change', { value: 'My new value' });
     spyOnChange.calledOnce.should.be.true;
   });
 
   it('should call onFocus when a label is clicked', () => {
-    let labelID = inputID + "Label"
-    let inputEl = subject.find('input#' + inputID)
+    let labelID = dummyConfig.inputID + "Label"
+    let inputEl = subject.find('input#' + dummyConfig.inputID)
     let activeEl = document.activeElement
 
     subject.find('label#' + labelID).simulate('click');
-    document.activeElement.getAttribute('id').should.equal(inputID);
+    document.activeElement.getAttribute('id').should.equal(dummyConfig.inputID);
   });
 
   it('should have type attribute', () => {
-    let input = subject.find('input#' + inputID);
+    let input = subject.find('input#' + dummyConfig.inputID);
     let inputType = input.props().type
 
-    inputType.should.equal(typeAttr);
+    inputType.should.equal(dummyConfig.typeAttr);
   });
+
+  it('should call first validation method in array', () => {
+    // trigger the validation logic
+    subject.find('input#' + dummyConfig.inputID).simulate('blur');
+    subject.update();
+
+    // verify no error displayed
+    let errorLabelID = dummyConfig.inputID + "ErrorMessage"
+    let errorLabel = subject.find('.inputFieldErrorMessage');
+    errorLabel.length.should.equal(1)
+  });
+
 });

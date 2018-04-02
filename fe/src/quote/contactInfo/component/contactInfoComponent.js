@@ -31,6 +31,7 @@ class ContactInfoComponent extends Component {
 
     handleComponentSubmit = values => {
       this.validateEmailVal();
+      
     }
 
     handleEmailInputVal = e => {
