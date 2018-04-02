@@ -6,6 +6,8 @@ import contactInfoLang from '../contactInfo.lang.js'
 import ContactInfoRender from './contactInfoRender'
 import * as actions from '../reducer/actions';
 
+import ContactFormConfigs from '../constants'
+
 class ContactInfoComponent extends Component {
 
     constructor(props) {
@@ -23,7 +25,6 @@ class ContactInfoComponent extends Component {
       }
 
     componentDidMount() {
-
     }
 
     validateEmailVal = () => {
@@ -93,10 +94,10 @@ class ContactInfoComponent extends Component {
 
       return (
         <ContactInfoRender
-          zipField={zipFieldConfig}
-          emailField={emailFieldConfig}
-          submitText={lang.submit}
-          onSubmit={this.handleComponentSubmit}
+          onSubmit ={ this.handleComponentSubmit }
+          logCompInput = { this.logInput }
+          handleEmailInputVal = { this.handleEmailInputVal }
+          { ...ContactFormConfigs }
         />
       );
     }
