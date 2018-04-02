@@ -1,18 +1,21 @@
 import React from 'react';
 import styles from '../contactInfoStyles.css'
 
-import InputField from '../../../common/components/InputField/inputField'
+import InputField from '../../../common/components/InputField/InputField'
 
 let ContactInfoRender = ( props ) => {
     return (
-        <form>
+        <form >
 
             <InputField { ...props.emailInputObj }
               onChangeHandler = {props.logCompInput}
             />
             <br/>
-            <InputField { ...props.zipInputObj }
-            />
+
+            {/*
+            // <InputField { ...props.zipInputObj }
+            // />
+            */}
 
             <br/>
 

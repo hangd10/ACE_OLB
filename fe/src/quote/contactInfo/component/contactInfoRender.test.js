@@ -1,17 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Enzyme, { shallow, render, mount } from 'enzyme';
+import Chai from 'chai';
+import Sinon from 'sinon';
+import jsdom from 'jsdom';
+
+import configureStore from 'redux-mock-store';
 
 import ContactInfoRender from './contactInfoRender'
-import chai, { expect } from 'chai'
-import Enzyme, { shallow, render, mount } from 'enzyme';
-
 import ContactFormConfigs from '../constants'
 
-describe('Contact Information Test Form Rendering', () => {
+Chai.should();
+
+
+describe('Contact Form', () => {
   let wrapper;
+  let mockStore;
+  let initialState;
 
     beforeEach( () => {
-        const props = {  }
+        initialState = {
+          email: "",
+          zipcode: 0,
+        }
+        mockStore = configureStore(initialState);
 
         wrapper = mount(<ContactInfoRender
           { ...ContactFormConfigs }
@@ -20,17 +31,25 @@ describe('Contact Information Test Form Rendering', () => {
     });
 
     it('verify instace of email field', () => {
-      let emailInputLength = wrapper.find('input#email').length;
-      expect(emailInputLength).to.eql(1);
+      let emailInput = wrapper.find('input#email');
+      emailInput.length.should.equal(1)
     });
 
+    /*
     it('verify instace of zip field', () => {
       let zipInputLength = wrapper.find('input#zipcode').length;
       expect(zipInputLength).to.eql(1);
     });
+    */
 
-    it('distributes props via an associative object', () => {
-
+    it('renders and instance of a submit button', () => {
+      let submitButton = wrapper.find('button[type="submit"]')
+      submitButton.length.should.equal(1)
     });
+
+    it('verify handleSubmit method is called on form submit', () => {
+      // wrapper.find('button[type="submit"]').simulate('click');
+      // subject.find('input#' + dummyConfig.inputID).simulate('change');
+    })
 
 })
