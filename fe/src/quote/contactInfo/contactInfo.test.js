@@ -13,7 +13,7 @@ import sinon from 'sinon';
 import chai, { expect } from 'chai'
 import Enzyme, { shallow, render, mount } from 'enzyme';
 
-import * as actions from './actions/';
+import * as actions from './actions';
 import api from '../../common/APIclient'
 
 import ContactInfoConfigObj from './constants'
@@ -49,22 +49,5 @@ describe('Contact Information Test Form Component', () => {
     });
 
 
-    // it('validates email input value', () => {
-    //   let emailInputConfig = ContactInfoConfigObj;
-    //   let emailInputError = ;
-    //
-    //   /* check that input field has rendered with current configs */
-    //   let emailInputFieldID = ContactInfoConfigObj.emailInputObj.inputID;
-    //   let emailInputField = wrapper.find('input#' + emailInputFieldID)
-    //
-    //   /* assigned field value */
-    //   emailInputField.props().value = "banana"
-    //   wrapper.find('button[type="submit"]').simulate('click');
-    //
-    //
-    //   console.log("input val: ", wrapper.find('button[type="submit"]'))
-    //
-    //
-    // });
 
 })
