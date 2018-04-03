@@ -34,7 +34,7 @@ class VehicleInfoComponent extends Component {
 const mapStateToProps = (state) => {
   return {
     contact: state.contact,
-    vehicle: state.vehicle
+    //vehicle: state.vehicle
   };
 }
 

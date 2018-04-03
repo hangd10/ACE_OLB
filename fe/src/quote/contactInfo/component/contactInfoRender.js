@@ -5,7 +5,7 @@ import InputField from '../../../common/components/InputField/InputField'
 
 let ContactInfoRender = ( props ) => {
     return (
-        <form >
+        <form onSubmit={ props.handleSubmitFromParent } >
 
             <InputField { ...props.emailInputObj }
               onChangeHandler = {props.logCompInput}

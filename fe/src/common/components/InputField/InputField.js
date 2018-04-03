@@ -29,32 +29,33 @@ class InputField extends Component {
   runValidation() {
     let val = this.value;
 
-    for (var i = 0; i < this.validate.length; i++){
-      let currValidFx = this.validate[i]
-      let fxVal = currValidFx(val);
+    if (Array.isArray(this.validate)) {
+      for (let f of this.validate) {
+        let fxVal = f(val);
 
-      if (fxVal !== null){ 
-
-        this.setState({ throwError : true, errorMessage : fxVal });
-        return;
-      } 
+        if (fxVal !== null) { 
+          this.setState({ throwError : true, errorMessage : fxVal });
+          return;
+        } 
+      }
     }
+    
   }
 
   componentDidUpdate() {
-    this.updateErrorMessage();
+    //this.updateErrorMessage();
   }
 
-  updateErrorMessage() {
-    return (this.state !== null && this.state.throwError ?
-      <label
-        className="inputFieldErrorMessage"
-        id={this.inputID + "ErrorMessage"}
-      >
-        {this.state.errorMessage}
-      </label> :
-      null)
-  }
+  // updateErrorMessage() {
+  //   return (this.state !== null && this.state.throwError ?
+  //     <label
+  //       className="inputFieldErrorMessage"
+  //       id={this.inputID + "ErrorMessage"}
+  //     >
+  //       {this.state.errorMessage}
+  //     </label> :
+  //     null)
+  // }
 
   render() {
     return (
@@ -81,7 +82,16 @@ class InputField extends Component {
           />
           {this.icon}
         </div>
-        { this.updateErrorMessage() }
+        { 
+          (this.state !== null && this.state.throwError ?
+            <label
+              className="inputFieldErrorMessage"
+              id={this.inputID + "ErrorMessage"}
+            >
+              {this.state.errorMessage}
+            </label> :
+            null)
+        }
       </div>
     );
   }

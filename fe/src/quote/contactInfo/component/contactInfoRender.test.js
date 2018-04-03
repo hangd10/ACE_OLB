@@ -50,6 +50,6 @@ describe('Contact Form', () => {
     it('verify handleSubmit method is called on form submit', () => {
       // wrapper.find('button[type="submit"]').simulate('click');
       // subject.find('input#' + dummyConfig.inputID).simulate('change');
-    })
+    });
 
 })

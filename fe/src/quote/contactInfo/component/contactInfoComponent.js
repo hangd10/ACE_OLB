@@ -29,9 +29,10 @@ class ContactInfoComponent extends Component {
 
     }
 
-    handleComponentSubmit = values => {
-      this.validateEmailVal();
-      
+    handleComponentSubmit = event => {
+      event.preventDefault();
+      //this.validateEmailVal();
+      console.log('handleComponentSubmit from contactInfoComponent')
     }
 
     handleEmailInputVal = e => {
@@ -44,7 +45,7 @@ class ContactInfoComponent extends Component {
     render() {
       return (
         <ContactInfoRender
-          onSubmit ={ this.handleComponentSubmit }
+          handleSubmitFromParent ={ this.handleComponentSubmit }
           logCompInput = { this.logInput }
           handleEmailInputVal = { this.handleEmailInputVal }
           { ...ContactFormConfigs }
