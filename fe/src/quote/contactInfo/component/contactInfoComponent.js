@@ -21,6 +21,7 @@ class ContactInfoComponent extends Component {
       }
 
     componentDidMount() {
+      // console.log("this: ", this)
     }
 
     validateEmailVal = () => {
@@ -55,7 +56,7 @@ class ContactInfoComponent extends Component {
 
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     contact: state.contact
   };

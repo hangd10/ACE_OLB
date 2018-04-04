@@ -1,4 +1,5 @@
 import * as actions from '../actions';
+import * as actionTypes from '../actionTypes';
 
 const initialState = {
     email: '',
@@ -6,15 +7,15 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
-    //console.log(`------------ Contact Info Reducer Action ${ JSON.stringify(action) } state ${ JSON.stringify(state) }`);
-
     switch(action.type) {
-        case actions.GO_TO_VEHICLE_INFO : {
+        case actionTypes.UPDATE_EMAIL : {
+
             return {
-                ...state
-                ,contact : action.payload
-            };
-        }
+                ...state,
+                email : action.payload
+            }
+        };
+
 
         default : { return state; }
     }
