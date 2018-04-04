@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { Provider, connect } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
+import configureMockStore from 'redux-mock-store';
 
 import sinon from 'sinon';
 import Chai, { expect } from 'chai'
@@ -10,7 +11,7 @@ import Enzyme, { shallow, render, mount } from 'enzyme';
 
 import ContactReducer from '../reducer/index';
 import ContactFormConfigs from '../constants'
-import ContactInfoComponent from './contactInfoComponent'
+import ContactInfoComponent, { mapStateToProps } from './contactInfoComponent'
 
 import * as actions from '../actions'
 import * as actionTypes from '../actionTypes';
@@ -22,6 +23,7 @@ describe('Contact Component Test', () => {
   let store;
   let initialState;
   let handleSubmit;
+  let mockStore;
 
   beforeEach( () => {
     handleSubmit = sinon.spy();
@@ -32,10 +34,17 @@ describe('Contact Component Test', () => {
     }
 
     const props = {  }
-    store = createStore(combineReducers({ contact : ContactReducer }));
+
+    mockStore = configureMockStore();
+    store = mockStore({
+      contact: { },
+    });
+
+
+    let mountedStore = createStore(combineReducers({ contact : ContactReducer }));
     
     wrapper = mount(
-      <Provider store={store}>
+      <Provider store={mountedStore}>
         <ContactInfoComponent handleSubmit={handleSubmit} { ...ContactFormConfigs }/>
       </Provider>
     );
@@ -44,12 +53,10 @@ describe('Contact Component Test', () => {
 
   it('should be able to submit the form', () => {
     wrapper.find('button[type="submit"]').simulate('click');
-    // expect(handleSubmit.calledWith(wrapper.instance().submit));
-
-    
+    expect(handleSubmit.calledWith(wrapper.instance().submit));
   });
 
-  it('updateEmail action should return updated obj', () => {
+  it('updateEmail action should return updated obj - action only ', () => {
     let payload = "updated@aaa-calif.com";
     let expectedObj = { type: actionTypes.UPDATE_EMAIL , payload: payload };
     var action = actions.updateEmail(payload);   
@@ -57,10 +64,30 @@ describe('Contact Component Test', () => {
     (JSON.stringify(action)).should.equal(JSON.stringify(expectedObj));
   });
 
-  it('should return __ updated store/state obj using __ reducer ', () => {
+  it('should map properly - mapStateToProps only', () => {
+    let contactState = { "contact" : { "email" : "dummy@aaa-calif.com", "zipCode": "91001" } };
+    let expectedContactState = mapStateToProps(contactState);
+
+    (JSON.stringify(contactState)).should.equal(JSON.stringify(expectedContactState));
+  });
+
+  it('should update store - reducer only', () => {
+    const expectedEmail = "updated@aaa-calif.com";
+    let test = store.dispatch(actions.updateEmail(expectedEmail));
+    let state = ContactReducer(initialState, store.getActions()[0]);
+
+    expectedEmail.should.equal(state.email);
+  });
+
+  it('should update store - action + reducer', () => {
+    let expectedEmail = "updated@aaa-calif.com";
+    let expectedState = { "contact" : { "email" : expectedEmail, "zipCode": "" } };
+    wrapper.props().store.dispatch(actions.updateEmail(expectedEmail))
+
+    // this function must be called AFTER dispatch...
+    let componentState = wrapper.props().store.getState();
+    (JSON.stringify(expectedState)).should.equal(JSON.stringify(componentState));
 
   });
-  
-  
 
 })
