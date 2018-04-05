@@ -8,10 +8,11 @@ let ContactInfoRender = ( props ) => {
         <form onSubmit={ props.handleSubmitFromParent } >
 
             <InputField { ...props.emailInputObj }
-              onChangeHandler = {props.logCompInput}
+              onChange = {props.onChangeHandler}
             />
             <br/>
             <InputField { ...props.zipInputObj }
+              onChange = {props.onChangeHandler}            
             />
 
             <br/>

@@ -32,8 +32,11 @@ class ContactInfoComponent extends Component {
 
     handleComponentSubmit = event => {
       event.preventDefault();
-      //this.validateEmailVal();
-      console.log('handleComponentSubmit from contactInfoComponent')
+      
+
+
+      console.log('handleComponentSubmit ', this.emailInputVal );
+      this.props.updateEmail(event.target.value)
     }
 
     handleEmailInputVal = e => {
@@ -41,14 +44,21 @@ class ContactInfoComponent extends Component {
     }
 
     logInput = e => {
+      console.log(e.target.value)
+      let currentTarget = e
+      this.setState({ [e.target.id]: e.target.value });
+
     }
 
     render() {
       return (
         <ContactInfoRender
           handleSubmitFromParent ={ this.handleComponentSubmit }
-          logCompInput = { this.logInput }
-          handleEmailInputVal = { this.handleEmailInputVal }
+          // logCompInput = { this.logInput }
+          handleEmailInputVal = { this.handleInputText }
+
+          onChangeHandler = {this.logInput}
+
           { ...ContactFormConfigs }
         />
       );
