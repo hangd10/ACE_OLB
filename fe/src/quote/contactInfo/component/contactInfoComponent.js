@@ -9,13 +9,13 @@ import ContactFormConfigs from '../constants'
 
 class ContactInfoComponent extends Component {
 
-    constructor(props) {
+    constructor(props, context) {
 
         super(props)
 
+        // using ID creates dynamic state
         this.state = {
-            emailInputVal: "",
-            zipCodeInputVal: 10000
+          fields: {}
         }
 
       }
@@ -25,15 +25,25 @@ class ContactInfoComponent extends Component {
     }
 
     validateEmailVal = () => {
-      let val = this.state.emailInputVal;
-      val = val.slice(val.length-4, val.length);
-
+      console.log("validate email executed")
     }
 
     handleComponentSubmit = event => {
       event.preventDefault();
-      //this.validateEmailVal();
-      console.log('handleComponentSubmit from contactInfoComponent')
+      console.log("test")
+      //assign dynamic state to corressponding store mapStateToProps
+      let stateFields = this.state.fields
+
+      //assign email
+      for ( let state in stateFields ){
+        let currentState = state
+
+        if ( currentState.includes("email") ){
+          console.log("looped")
+          this.props.updateEmail(stateFields.email)
+        }
+      }
+
     }
 
     handleEmailInputVal = e => {
@@ -41,14 +51,25 @@ class ContactInfoComponent extends Component {
     }
 
     logInput = e => {
+      let currentTarget = e
+
+      // dynamically store staet to field per id
+      this.setState(
+        { fields:
+          { ...this.state.fields, [e.target.id]: e.target.value}
+        }
+      );
+
     }
 
     render() {
       return (
         <ContactInfoRender
           handleSubmitFromParent ={ this.handleComponentSubmit }
-          logCompInput = { this.logInput }
-          handleEmailInputVal = { this.handleEmailInputVal }
+          // logCompInput = { this.logInput }
+
+          onChangeHandler = {this.logInput}
+
           { ...ContactFormConfigs }
         />
       );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class InputField extends Component {
-  
+
   constructor(props) {
     super(props);
 
@@ -25,7 +25,7 @@ class InputField extends Component {
     this.validate = props.validate;
 
   }
-  
+
   runValidation() {
     let val = this.value;
 
@@ -33,13 +33,13 @@ class InputField extends Component {
       for (let f of this.validate) {
         let fxVal = f(val);
 
-        if (fxVal !== null) { 
+        if (fxVal !== null) {
           this.setState({ throwError : true, errorMessage : fxVal });
           return;
-        } 
+        }
       }
     }
-    
+
   }
 
   componentDidUpdate() {
@@ -72,6 +72,7 @@ class InputField extends Component {
             className="inputElement"
             placeholder={this.placeholder}
             ref={(input) => { this.inputItem = input; }}
+            // ref={this.inputItem}
             onChange={this.onChange}
             value={this.value}
             onFocus={this.onFocus}
@@ -82,7 +83,7 @@ class InputField extends Component {
           />
           {this.icon}
         </div>
-        { 
+        {
           (this.state !== null && this.state.throwError ?
             <label
               className="inputFieldErrorMessage"
@@ -113,11 +114,8 @@ InputField.propTypes = {
   typeAttr: PropTypes.string,
   validate: PropTypes.array
 
-  // customProp: function(props, propName, componentName) {
-  //   if (props[propName] !== undefined && !/matchme/.test(props[propName])) {
-  //     return new Error(`${ props[propName] } is required.`);
-  //   }
-  // }
+
+
 };
 
 export default InputField;
