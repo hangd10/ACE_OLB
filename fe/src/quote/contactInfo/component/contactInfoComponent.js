@@ -6,6 +6,7 @@ import ContactInfoRender from './contactInfoRender'
 import * as actions from '../actions';
 
 import ContactFormConfigs from '../constants'
+import * as clientApi from '../contactInfoClient'
 
 class ContactInfoComponent extends Component {
 
@@ -39,10 +40,20 @@ class ContactInfoComponent extends Component {
         let currentState = state
 
         if ( currentState.includes("email") ){
-          console.log("looped")
+          console.log("looped ", stateFields.email)
           this.props.updateEmail(stateFields.email)
         }
       }
+
+      //const payload = { email: "david@aaa-calif.com", zipCode: "90210" }
+      clientApi.postContactForm(stateFields)
+        .then(response => {
+          console.log('success from contactInfoComponet ', JSON.stringify(response))
+        }) 
+        .catch(error => {
+          console.log('error from contactInfoComponet ', error);
+        })
+
 
     }
 
