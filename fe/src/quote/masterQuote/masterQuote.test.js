@@ -48,8 +48,9 @@ describe('MasterQuote', () => {
 
 
         wrapper = mount(
-          <MemoryRouter initialEntries={[ path ]}>
-              <MasterQuoteComponent store={store} />
+          //<MemoryRouter initialEntries={[ path ]}>
+          <MemoryRouter>
+              <MasterQuoteComponent location={"Test"} store={store} />
           </MemoryRouter>
         );
 
