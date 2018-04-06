@@ -12,7 +12,7 @@ import RouteWithSubRoutes from '../../../setup/routes'
 let MasterQuoteRender = ( props ) => {
 
     return (
-      <div>
+      <div className={"MasterQuote"}>
 
         <Switch>
 

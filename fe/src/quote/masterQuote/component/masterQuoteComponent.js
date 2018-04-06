@@ -7,6 +7,8 @@ import * as actions from '../actions';
 import MasterQuoteRender from './masterQuoteRender.js'
 import api from '../../../common/APIclient'
 
+import '../styles/MasterQuote.css'
+
 
 class MasterQuoteComponent extends Component {
 

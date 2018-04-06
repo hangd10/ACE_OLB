@@ -1,0 +1,19 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+// Font Variables
+$Roboto: 'Roboto', serif;
+
+.App {
+  background-color: #CCCCCC;
+
+  header {
+      background-color: #1066B5;
+      color: white;
+      text-align: center;
+      font-family: $Roboto;
+      padding: 2.5% 0;
+      font-size: .95em;
+  }
+
+}

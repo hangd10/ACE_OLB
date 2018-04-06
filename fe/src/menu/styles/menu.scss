@@ -1,0 +1,35 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,500,700,900');
+
+// Font Variables
+$Roboto: 'Roboto', serif;
+
+.Menu{
+  padding: .95em 0;
+  margin: 0 auto;
+  background: white;
+  font-family: $Roboto;
+  font-weight: 900;
+  color: #0099ff;
+  filter: drop-shadow( 0 .125em .125em rgba(30,30,30,0.25) );
+
+  .menuItem {
+    display: inline-block;;
+    padding: .5em;
+    font-size: 1.25em;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 0px solid #0099ff;
+
+    &:hover{
+      border-bottom: 5px solid #0099ff;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+  }
+
+}
