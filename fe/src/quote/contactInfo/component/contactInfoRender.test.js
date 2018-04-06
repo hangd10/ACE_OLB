@@ -20,7 +20,7 @@ describe('Contact Form', () => {
     beforeEach( () => {
         initialState = {
           email: "",
-          zipcode: 0,
+          zipcode: '',
         }
         mockStore = configureStore(initialState);
 
@@ -35,12 +35,10 @@ describe('Contact Form', () => {
       emailInput.length.should.equal(1)
     });
 
-    /*
     it('verify instace of zip field', () => {
-      let zipInputLength = wrapper.find('input#zipcode').length;
-      expect(zipInputLength).to.eql(1);
+      let zipInput = wrapper.find('input#zipCode');
+      zipInput.length.should.equal(1);
     });
-    */
 
     it('renders and instance of a submit button', () => {
       let submitButton = wrapper.find('button[type="submit"]')

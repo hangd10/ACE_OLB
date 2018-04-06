@@ -7,6 +7,7 @@ import * as actions from '../actions';
 
 import ContactFormConfigs from '../constants'
 import * as clientApi from '../contactInfoClient'
+import { stat } from 'fs';
 
 class ContactInfoComponent extends Component {
 
@@ -34,14 +35,16 @@ class ContactInfoComponent extends Component {
       console.log("test")
       //assign dynamic state to corressponding store mapStateToProps
       let stateFields = this.state.fields
-
+      console.log("stateFields: ",stateFields)
       //assign email
       for ( let state in stateFields ){
         let currentState = state
 
         if ( currentState.includes("email") ){
-          console.log("looped ", stateFields.email)
           this.props.updateEmail(stateFields.email)
+        }
+        if ( currentState.includes("zipCode") ){
+          this.props.updateEmail(stateFields.zipCode)
         }
       }
 
@@ -64,7 +67,7 @@ class ContactInfoComponent extends Component {
     logInput = e => {
       let currentTarget = e
 
-      // dynamically store staet to field per id
+      // dynamically store state to field per id
       this.setState(
         { fields:
           { ...this.state.fields, [e.target.id]: e.target.value}

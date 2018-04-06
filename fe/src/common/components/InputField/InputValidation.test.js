@@ -21,6 +21,7 @@ describe('Input Validation', () => {
     (isValidText === null).should.be.true
   })
 
+  // Email validation tests
   it('should validate email input', () => {
     const isValidEmail = v.validEmail('a@a.com');
     (isValidEmail === null).should.be.true;
@@ -50,4 +51,30 @@ describe('Input Validation', () => {
     const isInvalidEmail = v.validEmail('bobaaa.com');
     isInvalidEmail.should.equal('Invalid email address');
   })  
+  
+  // Zipcode validation tests
+  it('should validate zipcode input', () => {
+    const isValidZip= v.validZipcode('12345');
+    (isValidZip === null).should.be.true;
+  })
+
+  it('should check zip for less than 5 numbers', () => {
+    const isInvalidValidZip = v.validZipcode('123');
+    isInvalidValidZip.should.equal('Invalid zipcode');
+  })
+
+  it('should check zip for more than 5 numbers', () => {
+    const isInvalidValidZip = v.validZipcode('123456');
+    isInvalidValidZip.should.equal('Invalid zipcode');
+  })
+
+  it('should check zip for alphabetical characters', () => {
+    const isInvalidValidZip = v.validZipcode('1A345');
+    isInvalidValidZip.should.equal('Invalid zipcode');
+  })
+
+  it('should check zip for special characters', () => {
+    const isInvalidValidZip = v.validZipcode('1-3@5');
+    isInvalidValidZip.should.equal('Invalid zipcode');
+  })
 })
