@@ -8,3 +8,24 @@
     font-family: "Roboto", serif;
     padding: 2.5% 0;
     font-size: .95em; }
+    .App header .App-logo {
+      display: inline-block;
+      height: 2em;
+      margin: 0 .5em;
+      width: auto; }
+    .App header h1 {
+      display: inline-block;
+      font-weight: 400;
+      /* -- fix positioning -- */
+      padding: 0 6.5em;
+      margin-left: -2.5em;
+      /* -- fix positioning -- */ }
+  .App footer {
+    background-color: #012547;
+    color: #CCCCCC;
+    font-family: "Roboto", serif;
+    text-align: left;
+    padding: 1.75em 5em;
+    font-size: .5em;
+    position: fixed;
+    bottom: 0; }

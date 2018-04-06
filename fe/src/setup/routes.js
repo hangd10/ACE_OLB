@@ -3,20 +3,19 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import MasterQuote from '../quote/masterQuote/component/masterQuoteComponent'
 import ContactInfo from '../quote/contactInfo/component/contactInfoComponent'
+import App from '../App.js'
 
-
+{/*
 const routes = [
+
+  {
+    path: "/",
+    component: App,
+  },
 
   {
     path: "/quote",
     component: MasterQuote,
-
-    routes: [
-      {
-        path: "/quote/contactInfo",
-        component: ContactInfo
-      },
-    ]
   },
 
 ];
@@ -32,3 +31,4 @@ const RouteWithSubRoutes = route => (
 );
 
 export default RouteWithSubRoutes;
+*/}

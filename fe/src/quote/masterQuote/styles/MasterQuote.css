@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700");
+.MasterQuote {
+  max-width: 60em;
+  margin: auto;
+  padding: 1.5em 5em;
+  font-family: "Roboto", serif; }
+  .MasterQuote .App-intro {
+    font-family: "Roboto Slab", serif; }
+    .MasterQuote .App-intro h2 {
+      color: #555555;
+      font-weight: 400; }
+      .MasterQuote .App-intro h2 span {
+        display: inline-block; }
+    .MasterQuote .App-intro h5, .MasterQuote .App-intro h4 {
+      color: #555555;
+      font-weight: 400; }
+    .MasterQuote .App-intro h5 {
+      font-family: "Roboto", serif; }
+    .MasterQuote .App-intro button {
+      background-color: #0099ff;
+      border: none;
+      padding: 1em 1.5em;
+      color: white;
+      font-family: "Roboto", serif;
+      border-radius: .25em;
+      font-size: 1em;
+      text-transform: uppercase;
+      width: 15em;
+      margin: .5em 0;
+      cursor: pointer; }
+      .MasterQuote .App-intro button:focus {
+        outline: none; }
+  .MasterQuote .QuoteForms {
+    background-color: white;
+    padding: 1.5em;
+    margin: 0 auto;
+    filter: drop-shadow(0 0.125em 0.125em rgba(30, 30, 30, 0.25));
+    max-width: 50em; }

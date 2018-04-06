@@ -17,16 +17,7 @@ class MasterQuoteComponent extends Component {
   }
 
   componentDidMount() {
-    this.props.addTodo("testing")
-    // const dataMock = {
-    //   userEmail: "bob@aaa-calif.com",
-    //   zipCode: 12345
-    // }
-    // const calbk = (resp) => {
-    //   console.log("successful call: ", resp);
-    // }
-    //
-    // api.POST('https://jsonplaceholder.typicode.com/posts', dataMock, null, calbk)
+    console.log("mounted: ", this)
 
   }
 
@@ -36,7 +27,9 @@ class MasterQuoteComponent extends Component {
 
   render() {
     return (
-      <MasterQuoteRender />
+      <MasterQuoteRender
+        location={this.props.location}
+      />
     );
   }
 }
