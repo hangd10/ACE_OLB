@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { middleware as body } from 'bodymen'
-import { stub } from './controller'
+import { stub, stub2, stub3 } from './controller'
 
 const router = new Router()
 
@@ -20,10 +20,23 @@ const zipCode = '';
  * @apiError 404 Quote not found.
  * @apiError 401 master access only.
  * 
+ * CURL Command Test - curl -X PUT -d '{ "email" : "dh@aaa.com", "zipCode" : 90210 }' -H "Content-Type: application/json"  http://0.0.0.0:9000/api/dummy
+ */
+router.put('/',
+  body({ email, zipCode }),
+  stub)
+
+/**
+ * CURL Command Test - curl -X GET -H "Content-Type: application/json"  http://0.0.0.0:9000/api/dummy
+ */
+router.get('/',
+  stub2)
+
+/**
  * CURL Command Test - curl -X POST -d '{ "email" : "dh@aaa.com", "zipCode" : 90210 }' -H "Content-Type: application/json"  http://0.0.0.0:9000/api/dummy
  */
 router.post('/',
   body({ email, zipCode }),
-  stub)
+  stub3)
 
 export default router

@@ -97,7 +97,7 @@ describe('Input Field Component', () => {
     let labelID = dummyConfig.inputID + "Label"
     let inputEl = subject.find('input#' + dummyConfig.inputID)
     let activeEl = document.activeElement
-
+    
     subject.find('label#' + labelID).simulate('click');
     document.activeElement.getAttribute('id').should.equal(dummyConfig.inputID);
   });

@@ -24,7 +24,7 @@ const contactForm = {
     maxLenth:"5" ,
     typeAttr: "number",
     placeHolder: "zipcode",
-    inputID: "zipcode",
+    inputID: "zipCode",
     errorMessage: "Zipcode is invalid"
   }
 
