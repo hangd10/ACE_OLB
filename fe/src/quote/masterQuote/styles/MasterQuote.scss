@@ -1,0 +1,68 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
+
+// Font Variables
+$Roboto: 'Roboto', serif;
+$Roboto-Slab: 'Roboto Slab', serif;
+
+.MasterQuote {
+  max-width: 60em;
+  margin: auto;
+  padding: 1.5em 5em;
+  font-family: $Roboto;
+
+  .App-intro {
+    font-family: $Roboto-Slab;
+
+    h2 {
+      color: #555555;
+      font-weight: 400;
+
+      span {
+        display: inline-block;
+      }
+
+    }
+
+    h5, h4 {
+      color: #555555;
+      font-weight: 400;
+
+    }
+
+    h5 {
+      font-family: $Roboto;
+
+    }
+
+    button {
+      background-color: #0099ff;
+      border: none;
+      padding: 1em 1.5em;
+      color: white;
+      font-family: $Roboto;
+      border-radius: .25em;
+      font-size: 1em;
+      text-transform: uppercase;
+      width: 15em;
+      margin: .5em 0;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+
+    }
+
+  }
+
+  .QuoteForms {
+    background-color: white;
+    padding: 1.5em;
+    margin: 0 auto;
+    filter: drop-shadow( 0 0.125em 0.125em rgba(30, 30, 30, 0.25));
+    max-width: 50em;
+  }
+
+}

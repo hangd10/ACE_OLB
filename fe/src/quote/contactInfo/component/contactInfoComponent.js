@@ -23,7 +23,7 @@ class ContactInfoComponent extends Component {
       }
 
     componentDidMount() {
-      // console.log("this: ", this)
+      console.log("this: ", this)
     }
 
     validateEmailVal = () => {

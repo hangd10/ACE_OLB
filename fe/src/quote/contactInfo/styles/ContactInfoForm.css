@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+.ContactInfoForm {
+  font-family: "Roboto", serif; }
+  .ContactInfoForm .inputFieldContainer {
+    text-align: left;
+    margin: 0 auto 0.5em auto; }
+    .ContactInfoForm .inputFieldContainer label {
+      color: #CCCCCC;
+      font-size: .8em;
+      font-weight: 500; }
+    .ContactInfoForm .inputFieldContainer .inputContainer {
+      width: 100%; }
+      .ContactInfoForm .inputFieldContainer .inputContainer input {
+        width: 100%;
+        font-size: 1em;
+        padding: 0.25em 0 0.5em 0;
+        /* --- RESET --- */
+        border: none;
+        background-image: none;
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        /* --- RESET --- */
+        border-bottom: .125em solid #CCCCCC; }
+        .ContactInfoForm .inputFieldContainer .inputContainer input::-webkit-outer-spin-button, .ContactInfoForm .inputFieldContainer .inputContainer input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0; }
+        .ContactInfoForm .inputFieldContainer .inputContainer input:focus {
+          outline: none;
+          border-bottom: .125em solid #00A4FF;
+          caret-color: #00A4FF; }
+  .ContactInfoForm button {
+    background-color: #0099ff;
+    border: none;
+    padding: 1em 1.5em;
+    color: white;
+    font-family: "Roboto", serif;
+    border-radius: .25em;
+    font-size: 1em;
+    text-transform: uppercase;
+    width: 15em;
+    margin: .5em 0;
+    cursor: pointer; }
+    .ContactInfoForm button:focus {
+      outline: none; }

@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,500,700,900");
+.Menu {
+  height: 3.25em;
+  margin: 0 auto;
+  padding: 0;
+  background: white;
+  font-family: "Roboto", serif;
+  font-weight: 900;
+  color: #0099ff;
+  filter: drop-shadow(0 0.125em 0.125em rgba(30, 30, 30, 0.25));
+  text-align: center; }
+  .Menu .menuItem {
+    display: inline-block;
+    padding: 0 1.75em;
+    height: 2.35em;
+    font-size: 1.25em;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 0px solid #0099ff; }
+    .Menu .menuItem:hover {
+      border-bottom: 5px solid #0099ff; }
+    .Menu .menuItem a {
+      text-decoration: none;
+      color: inherit;
+      /*- -- Fix Positioning --- */
+      line-height: 2.5em; }

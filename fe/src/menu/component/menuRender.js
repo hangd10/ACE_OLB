@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import '../styles/menu.css';
 
 
 let MenuRender = ( props ) => {
 
     return (
 
-      <ul>
+      <ul className={"Menu"}>
 
         { props.menuItems.map((menuItem, i) => {
             return (

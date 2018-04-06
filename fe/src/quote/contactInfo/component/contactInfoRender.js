@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from '../contactInfoStyles.css'
+import '../styles/ContactInfoForm.css'
 
 import InputField from '../../../common/components/InputField/InputField'
 
 let ContactInfoRender = ( props ) => {
     return (
-        <form onSubmit={ props.handleSubmitFromParent } >
+        <form className="ContactInfoForm" onSubmit={ props.handleSubmitFromParent } >
 
             <InputField { ...props.emailInputObj }
               onChange = {props.onChangeHandler}
@@ -19,7 +19,7 @@ let ContactInfoRender = ( props ) => {
 
             <br/>
 
-          <button id="submitId" type="submit">Submit</button>
+          <button className="button" id="submitId" type="submit">Submit</button>
 
         </form>
 
