@@ -10,34 +10,53 @@ var mock = new MockAdapter(clientAPI.getInstance());
 Chai.should();
 
 describe('API Client Test Happy Path', () => {
-  const users = [
-    { id: 1, name: 'John Smithzzz' }
+  const usersGetPayload = [
+    { id: 1, name: 'John Smith' }
   ];
 
   beforeEach(() => {
     // fake server with fake response
     mock.onGet('/users', {}).reply(200, {
-      users
+      userz : usersGetPayload
     });
-    mock.onPost('/users',{}).reply(200, {
-      users
+    mock.onPost('/users',{}).reply(201, {
+      // no object returned, just 201 status code
+    })
+    mock.onPut('/users', {}).reply(204, {
+      // no object returned, just 204 status code
+    })
+    mock.onDelete('/users', {}).reply(200, {
+      // no object returned, just 200 status code
     })
   })
 
   it('should call get endpoint', () => {
     clientAPI.get('/users')
       .then(function(response) {
-        (JSON.stringify(users)).should.equal(JSON.stringify(response.data.users));
+        (JSON.stringify(usersGetPayload)).should.equal(JSON.stringify(response.data.userz));
       });    
   })
 
   it('should call post endpoint', () => {
     clientAPI.post('/users', {})
       .then(function(response) {
-        (JSON.stringify(users)).should.equal(JSON.stringify(response.data.users));
+        expect(response.status).to.equal(201)
       });  
   })
 
+  it('should call put endpoint', () => {
+    clientAPI.put('/users', {})
+      .then(function(response) {
+        expect(response.status).to.equal(204)
+      });  
+  })
+
+  it('should call delete endpoint', () => {
+    clientAPI.remove('/users', {})
+      .then(function(response) {
+        expect(response.status).to.equal(200)
+      });  
+  })
 })
 
 describe('API Client Test Error Handling', () => {

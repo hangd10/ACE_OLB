@@ -28,6 +28,32 @@ export const get = (url, queryPayload) => {
     })  
 }
 
+export const put = (url, payload) => {
+
+  return getInstance().put(url, payload)
+    .then(response => {
+      // TODO : Additional Logging ?
+      return response;
+    })
+    .catch(error => {
+      // TODO : Global Error Handling
+      console.log(`APIClient PUT ${url} payload ${payload} - ${error}`)
+    })
+}
+
+export const remove = (url, payload) => {
+
+  return getInstance().delete(url, payload)
+    .then(response => {
+      // TODO : Additional Logging ?
+      return response;
+    })
+    .catch(error => {
+      // TODO : Global Error Handling
+      console.log(`APIClient DELETE ${url} payload ${payload} - ${error}`)
+    })
+}
+
 export const convertToURLParams = (payload) => {
   return Object.keys(payload).reduce( (uri, key) => {
     return `${uri}&${key}=${encodeURI(payload[key])}`; 
