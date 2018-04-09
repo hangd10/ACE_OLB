@@ -17,7 +17,6 @@ class MasterQuoteComponent extends Component {
   }
 
   componentDidMount() {
-    console.log("mounted: ", this)
 
   }
 
@@ -27,7 +26,7 @@ class MasterQuoteComponent extends Component {
 
   render() {
     return (
-      <MasterQuoteRender
+      <MasterQuoteRender 
         location={this.props.location}
       />
     );

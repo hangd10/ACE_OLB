@@ -69,10 +69,10 @@ describe('Contact Component w/ Mock Store ', () => {
 describe('Contact Component w/ Redux Store ', () => {
   let wrapper;
   let initialState;
-  let handleComponentSubmit;
+  let handleComponentSubmitSpy;
 
   beforeEach( () => {
-    handleComponentSubmit = sinon.spy();
+    handleComponentSubmitSpy = sinon.spy();
 
     const initialState = {
       email: '',
@@ -84,52 +84,15 @@ describe('Contact Component w/ Redux Store ', () => {
 
     wrapper = mount(
       <Provider store={mountedStore}>
-        <ContactInfoComponent handleSubmitFromParent={handleComponentSubmit} { ...ContactFormConfigs }/>
+        <ContactInfoComponent handleSubmitFromParent={handleComponentSubmitSpy} { ...ContactFormConfigs }/>
       </Provider>
     );
 
   });
 
   it('should be able to submit the form', () => {
-    // wrapper.find('button[type="submit"]').simulate('click');
-    // expect(handleSubmit.calledWith(wrapper.instance().submit));
-  });
-
-  it('should be able to submit the form and verify input against store ', () => {
-    let mountedStore = createStore(combineReducers({ contact : ContactReducer }));
-
-    wrapper= mount(
-      <ContactInfoComponent
-        store={mountedStore}
-        { ...ContactFormConfigs }
-      />
-    );
-
-    console.log(wrapper.debug())
-    console.log(wrapper.props())
-    let handleComponentSubmitSpy = sinon.spy(wrapper, 'handleComponentSubmit')
-
-    // let temp = wrapper.props();
-    // let tSpy = sinon.spy(temp,'handleComponentSubmit');
-
-    // define expected email
-    let exampleEmail = 'example@aaa.com';
-    let emailInputID = ContactFormConfigs.emailInputObj.inputID
-    let emailInputField = wrapper.find('input#' + emailInputID)
-
-    // feed data into form
-    emailInputField.props().value = exampleEmail;
-
-    // click submit
-    wrapper.find('button[type="submit"]').simulate('submit');
-    console.log(handleComponentSubmitSpy.called)
-
-
-    // verify expected email matches persisted value
-    let componentState = wrapper.props().store.getState();
-
-    // console.log("compState: ", componentState)
-    // exampleEmail.should.equal(componentState.email);
+    wrapper.find('button[type="submit"]').simulate('click');
+    expect(handleComponentSubmitSpy.calledWith(wrapper.instance().submit));
   });
 
   it('should update store - action + reducer', () => {

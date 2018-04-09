@@ -7,7 +7,6 @@ import VehicleInfoComponent from '../../vehicleInfo/component/vehicleInfoCompone
 
 let MasterQuoteRender = ( props ) => {
 
-    console.log("masterRender: ", props)
     return (
 
       <div className={"MasterQuote"}>

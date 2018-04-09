@@ -23,19 +23,19 @@ class ContactInfoComponent extends Component {
       }
 
     componentDidMount() {
-      console.log("this: ", this)
+      //console.log("this: ", this)
     }
 
     validateEmailVal = () => {
-      console.log("validate email executed")
+      //console.log("validate email executed")
     }
 
     handleComponentSubmit = event => {
       event.preventDefault();
-      console.log("test")
+      //console.log("test")
       //assign dynamic state to corressponding store mapStateToProps
       let stateFields = this.state.fields
-      console.log("stateFields: ",stateFields)
+      //console.log("stateFields: ",stateFields)
       //assign email
       for ( let state in stateFields ){
         let currentState = state
