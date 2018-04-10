@@ -69,12 +69,16 @@ export const getInstance = () => {
   // error logs should display 'Error: timeout of 10000ms exceeded'
   axios.defaults.timeout = 10000;
 
+  // log each request going to external api
   axios.interceptors.request.use(request => {
-    // TODO : Added Auth Tokens
+    // TODO : Hook into Centralized Logging Server
+    //console.log('Starting Request', request)
     return request;
   })
 
   axios.interceptors.response.use(response => {
+    // TODO : Hook into Centralized Logging Server
+    //console.log('Response:', response)
     return response
   })
 

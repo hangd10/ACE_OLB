@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 import Chai, { expect } from 'chai';
 
-import * as clientAPI from './APIclient';
+import * as clientAPI from './nodeAPIclient';
 
 var MockAdapter = require('axios-mock-adapter');
 // This sets the mock adapter on the default instance
